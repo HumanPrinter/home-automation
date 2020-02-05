@@ -1,0 +1,8 @@
+- name: Run apt-get update
+  apt:
+    autoremove: yes
+    state: latest
+    update_cache: yes
+    upgrade: full
+  become: yes
+  tags: [apt]

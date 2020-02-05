@@ -1,0 +1,5 @@
+- hosts: openhab2
+  roles:
+  - role: ssh
+  - role: common-tasks
+  - role: dockerhost

@@ -1,0 +1,14 @@
+- include: install.yml
+  tags: [docker, docker-install]
+
+- name: Make sure the management user is member of the Docker group
+  user:
+    name: "{{ management_user }}"
+    append: yes
+    group: docker
+  become: yes
+  tags: [docker, docker-config]
+
+- name: Login to the Docker hub
+  command: docker login --username="{{ docker_hub.username }}" --password="{{ docker_hub.password }}"
+  tags: [docker, docker-config]

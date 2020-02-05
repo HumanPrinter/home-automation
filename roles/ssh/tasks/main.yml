@@ -1,0 +1,23 @@
+- name: "Create group for SSH-users"
+  group:
+    name: ssh-users
+  become: yes
+  tags: [ssh]
+
+- name: "Add management user to the 'ssh-users' group"
+  user:
+    name: "{{ management_user }}"
+    append: yes
+    groups: ssh-users
+  become: yes
+  tags: [ssh]
+
+- name: "Set allowed groups for SSH access"
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: AllowGroups ssh-users
+    regexp: "^#?AllowGroups"
+  become: yes
+  notify: restart sshd
+  tags: [ssh]
+  
