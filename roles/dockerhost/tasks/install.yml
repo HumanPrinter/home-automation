@@ -10,13 +10,14 @@
     url: https://get.docker.com
     dest: /tmp/docker-install.sh
     mode: "a+x"
-  when: docker_installed.stat.exists == False
+  when: "not docker_installed.stat.exists"
   tags: [docker2, docker-install]
 
 - name: Execute the Docker install script
-  shell: /bin/sh /tmp/docker-install.sh
+  script:
+    cmd: /tmp/docker-install.sh
   become: yes
-  when: docker_installed.stat.exists == False
+  when: "not docker_installed.stat.exists"
   tags: [docker2, docker-install]
 
 - name: Remove the install script
@@ -37,5 +38,5 @@
     path: /root/.docker_installed
     state: touch
   become: yes
-  when: docker_installed.stat.exists == False
+  when: "not docker_installed.stat.exists"
   tags: [docker, docker-install]

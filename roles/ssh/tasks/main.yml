@@ -20,4 +20,3 @@
   become: yes
   notify: restart sshd
   tags: [ssh]
-  

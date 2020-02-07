@@ -1,12 +1,19 @@
 - hosts: openhab2
   tasks:
-    - name: "Check if the passwd-file already exists"
-      stat:
-        path: /dockermnt/mosquitto/config/passwd
-      register: passwd_stat
-    
+  - name: "Check if the passwd-file already exists"
+    stat:
+      path: /dockermnt/mosquitto/config/passwd
+    register: passwd_stat
+
 - hosts: openhab2
   roles:
+  - role: dockermounts
+    templates:
+    - { src: mosquitto_passwd.j2, dest: mosquitto/config/passwd }
+    mounts:
+    - { source: mosquitto/config/ }
+    condition: "{{ not passwd_stat.stat.exists }}"
+
   - role: dockercontainer
     container_name: "mosquitto_temp"
     container_image: "eclipse-mosquitto:1.6.8"
@@ -15,18 +22,21 @@
     cleanup: "yes"
     detach: "no"
     restart_policy: "no"
-    templates:
-      - { src: passwd.j2, dest: /dockermnt/mosquitto/config/passwd }
     mounts:
-      - { src: /dockermnt/mosquitto/config/, dest: /mosquitto_temp/, type: directory, read_only: "no" }
-    condition: "{{ passwd_stat.stat.exists == False }}"
+    - { source: /dockermnt/mosquitto/config/, target: /mosquitto_temp/, read_only: "no", type: bind }
+    condition: "{{ not passwd_stat.stat.exists }}"
+
+  - role: dockermounts
+    templates:
+    - { src: mosquitto.conf.j2, dest: mosquitto/config/mosquitto.conf }
+    mounts:
+    - { source: mosquitto/config/ }
+    - { source: mosquitto/data/ }
 
   - role: dockercontainer
     container_name: "mosquitto_1.6.8"
     container_image: "eclipse-mosquitto:1.6.8"
     exposed_ports: "1883:1883"
-    templates:
-      - { src: mosquitto.conf.j2, dest: /dockermnt/mosquitto/config/mosquitto.conf }
     mounts:
-      - { src: /dockermnt/mosquitto/config/, dest: /mosquitto/config/, type: directory }
-      - { src: /dockermnt/mosquitto/data/,   dest: /mosquitto/data/,   type: directory }
+    - { source: /dockermnt/mosquitto/config/, target: /mosquitto/config/, read_only: "no", type: bind }
+    - { source: /dockermnt/mosquitto/data/,   target: /mosquitto/data/,   read_only: "no", type: bind }

@@ -5,4 +5,4 @@
     container_image: "portainer/agent:1.5.1"
     exposed_ports: "9001:9001"
     mounts:
-        - { src: /var/run/docker.sock, dest: /var/run/docker.sock, type: sock }
+    - { source: /var/run/docker.sock, target: /var/run/docker.sock, read_only: "no", type: bind }

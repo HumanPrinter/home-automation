@@ -12,3 +12,17 @@
 - name: Login to the Docker hub
   command: docker login --username="{{ docker_hub.username }}" --password="{{ docker_hub.password }}"
   tags: [docker, docker-config]
+
+- name: Install pip3
+  apt:
+    update_cache: yes
+    name: "python3-pip"
+    state: present
+  become: yes
+  tags: [docker, dependencies]
+
+- name: Install Docker SDK for Python
+  pip:
+    name: docker
+    state: present
+  tags: [docker, dependencies]
