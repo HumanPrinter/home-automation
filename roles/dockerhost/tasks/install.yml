@@ -14,8 +14,7 @@
   tags: [docker2, docker-install]
 
 - name: Execute the Docker install script
-  script:
-    cmd: /tmp/docker-install.sh
+  shell: /bin/sh /tmp/docker-install.sh
   become: yes
   when: "not docker_installed.stat.exists"
   tags: [docker2, docker-install]
