@@ -1,0 +1,20 @@
+- hosts: openhab2
+  roles:
+  - role: dockermounts
+    templates:
+    - { src: nodered_sshconfig.j2,   dest: node-red/home/.ssh/config, group: pi, mode: '600' }
+    - { src: nodered_knownhosts.j2,  dest: node-red/home/.ssh/known_hosts, group: pi, mode: '644' }
+    - { src: nodered_settings.js.j2, dest: node-red/data/settings.js, group: pi }
+    - { src: nodered_privatekey.j2,  dest: node-red/data/projects/.sshkeys/__default_Azure_DevOps, group: pi, mode: '600' }
+    - { src: nodered_publickey.j2,   dest: node-red/data/projects/.sshkeys/__default_Azure_DevOps.pub, group: pi, mode: '600' }
+    mounts:
+    - { source: node-red/data/, group: pi }
+    - { source: node-red/home/, group: pi }
+
+  - role: dockercontainer
+    container_name: "nodered_1.0.3-2-12"
+    container_image: "nodered/node-red:1.0.3-2-12"
+    exposed_ports: "1880:1880"
+    mounts:
+    - { source: /dockermnt/node-red/data/, target: /data/,                       read_only: "no", type: bind }
+    - { source: /dockermnt/node-red/home/.ssh/, target: /usr/src/node-red/.ssh/, read_only: "no", type: bind }
