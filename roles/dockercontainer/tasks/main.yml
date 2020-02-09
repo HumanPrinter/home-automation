@@ -4,6 +4,7 @@
     image: "{{ container_image }}"
     cleanup: "{{ cleanup | default('no') }}"
     detach: "{{ detach | default('yes') }}"
+    env: "{{ environment_variables | default({}) }}"
     command: "{{ command | default(None) }}"
     network_mode: "{{ network_mode | default('bridge') }}"
     published_ports: "{{ exposed_ports }}"
