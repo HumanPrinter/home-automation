@@ -1,7 +1,31 @@
+- name: Retrieve the name of any container with the same basename
+  shell: "docker ps --format '{{ '{{' }}.Names{{ '}}' }}' -f 'name={{ container_basename }}_*'"
+  register: container_stat
+  tags: [docker-container, prepare]
+
+- name: Fetch the new image
+  docker_image:
+    name: "{{ container_image }}"
+    tag: "{{ container_tag }}"
+    state: present
+    source: pull
+  when: "(container_basename + '_' + container_tag) != container_stat.stdout"
+  tags: [docker-container, prepare]
+      
+- name: Change the restart policy of the existing container to 'no'
+  shell: "docker update --restart=no {{ container_stat.stdout }}"
+  when: "(container_basename + '_' + container_tag) != container_stat.stdout"
+  tags: [docker-container, prepare]
+  
+- name: Stop the existing container
+  shell: "docker stop {{ container_stat.stdout }}"
+  when: "(container_basename + '_' + container_tag) != container_stat.stdout"
+  tags: [docker-container, prepare]
+  
 - name: Create and start Docker container
   docker_container:
-    name: "{{ container_name }}"
-    image: "{{ container_image }}"
+    name: "{{ container_basename }}_{{ container_tag }}"
+    image: "{{ container_image }}:{{ container_tag }}"
     cleanup: "{{ cleanup | default('no') }}"
     detach: "{{ detach | default('yes') }}"
     env: "{{ environment_variables | default({}) }}"
@@ -11,5 +35,5 @@
     state: started
     restart_policy: "{{ restart_policy | default ('always') }}"
     mounts: "{{ mounts | default([]) }}"
-  when: "condition | default(True)"
+  when: "condition | default(True) AND (container_basename + '_' + container_tag) != container_stat.stdout"
   tags: [docker-container, deploy]

@@ -15,8 +15,9 @@
     condition: "{{ not passwd_stat.stat.exists }}"
 
   - role: dockercontainer
-    container_name: "mosquitto_temp"
-    container_image: "eclipse-mosquitto:1.6.8"
+    container_basename: "mosquitto_temp"
+    container_image: "eclipse-mosquitto"
+    container_tag: "1.6.8"
     exposed_ports: "1883:1883"
     command: mosquitto_passwd -U /mosquitto_temp/passwd
     cleanup: "yes"
@@ -34,8 +35,9 @@
     - { source: mosquitto/data/ }
 
   - role: dockercontainer
-    container_name: "mosquitto_1.6.8"
-    container_image: "eclipse-mosquitto:1.6.8"
+    container_basename: "mosquitto"
+    container_image: "eclipse-mosquitto"
+    container_tag: "1.6.8"
     exposed_ports: "1883:1883"
     mounts:
     - { source: /dockermnt/mosquitto/config/, target: /mosquitto/config/, read_only: "no", type: bind }
