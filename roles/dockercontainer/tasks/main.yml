@@ -14,12 +14,12 @@
       
 - name: Change the restart policy of the existing container to 'no'
   shell: "docker update --restart=no {{ container_stat.stdout }}"
-  when: "(container_basename + '_' + container_tag) != container_stat.stdout"
+  when: "container_stat.stdout | length > 0 and (container_basename + '_' + container_tag) != container_stat.stdout"
   tags: [docker-container, prepare]
   
 - name: Stop the existing container
   shell: "docker stop {{ container_stat.stdout }}"
-  when: "(container_basename + '_' + container_tag) != container_stat.stdout"
+  when: "container_stat.stdout | length > 0 and (container_basename + '_' + container_tag) != container_stat.stdout"
   tags: [docker-container, prepare]
   
 - name: Create and start Docker container
@@ -35,5 +35,7 @@
     state: started
     restart_policy: "{{ restart_policy | default ('always') }}"
     mounts: "{{ mounts | default([]) }}"
-  when: "condition | default(True) AND (container_basename + '_' + container_tag) != container_stat.stdout"
+    comparisons:
+      '*': strict
+  when: "condition | default(True)"
   tags: [docker-container, deploy]
