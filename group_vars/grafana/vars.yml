@@ -1,0 +1,11 @@
+grafana:
+    smtp:
+        host: send.one.com
+        port: 25
+        user: oscar@oscarbrouwer.nl
+        password: "{{ vault_grafana_smtp_password }}"
+
+influxdb:
+    database_name: homeautomation
+    default_readusername: "grafana"
+    default_readuserpassword: "{{ vault_influx_defaultreaduser_password }}"

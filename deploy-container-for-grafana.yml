@@ -1,0 +1,22 @@
+- hosts: openhab2
+  roles:
+  - role: dockermounts
+    templates:
+    - { src: grafana.ini.j2,                                dest: grafana/config/grafana.ini }
+    - { src: grafana_datasource.j2,                         dest: grafana/config/provisioning/datasources/datasource.yml }
+    - { src: grafana_notifier.j2,                           dest: grafana/config/provisioning/notifiers/notifier.yml }
+    - { src: grafana_dashboard.j2,                          dest: grafana/config/provisioning/dashboards/dashboard.yml }
+    - { src: grafana_dashboard_omnikinverterdata.j2,        dest: grafana/config/provisioning/dashboards/omnikinverterdata.json }
+    - { src: grafana_dashboard_shellymonitoring.j2,         dest: grafana/config/provisioning/dashboards/shellymonitoring.json }
+    - { src: grafana_dashboard_slimmemeter.j2,              dest: grafana/config/provisioning/dashboards/slimmemeter.json }
+    - { src: grafana_dashboard_stroomverbruikhuishouden.j2, dest: grafana/config/provisioning/dashboards/stroomverbruikhuishouden.json }
+    
+  - role: dockercontainer
+    container_basename: "grafana"
+    container_image: "grafana/grafana"
+    container_tag: "6.6.1"
+    exposed_ports: "3000:3000"
+    environment_variables:
+      GF_INSTALL_PLUGINS: grafana-piechart-panel
+    mounts:
+    - { source: /dockermnt/grafana/config/, target: /etc/grafana/,     read_only: "yes", type: bind }
