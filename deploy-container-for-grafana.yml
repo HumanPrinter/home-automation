@@ -14,9 +14,9 @@
   - role: dockercontainer
     container_basename: "grafana"
     container_image: "grafana/grafana"
-    container_tag: "6.6.1"
+    container_tag: "6.6.2"
     exposed_ports: "3000:3000"
     environment_variables:
       GF_INSTALL_PLUGINS: grafana-piechart-panel
     mounts:
-    - { source: /dockermnt/grafana/config/, target: /etc/grafana/,     read_only: "yes", type: bind }
+    - { source: /dockermnt/grafana/config/, target: /etc/grafana/, read_only: "yes", type: bind }
