@@ -12,9 +12,9 @@
   file:
     path: "/dockermnt/{{ item.source }}"
     state: directory
-    owner: "{{ management_user }}"
+    owner: "{{ item.owner | default(management_user) }}"
     group: "{{ item.group | default('docker') }}"
-    mode: "775"
+    mode: "{{ item.mode | default('775') }}"
   become: yes
   loop: "{{ mounts | default([]) }}"
   when: "item.type | default('directory') == 'directory'"
