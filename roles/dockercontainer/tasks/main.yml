@@ -28,10 +28,11 @@
     image: "{{ container_image }}:{{ container_tag }}"
     cleanup: "{{ cleanup | default('no') }}"
     detach: "{{ detach | default('yes') }}"
+    devices: "{{ devices | default([]) }}"
     env: "{{ environment_variables | default({}) }}"
     command: "{{ command | default(None) }}"
     network_mode: "{{ network_mode | default('bridge') }}"
-    published_ports: "{{ exposed_ports }}"
+    published_ports: "{{ exposed_ports | default([]) }}"
     state: started
     restart_policy: "{{ restart_policy | default ('always') }}"
     mounts: "{{ mounts | default([]) }}"
