@@ -1,0 +1,87 @@
+- name: "Create new group for openhab"
+  group:
+    name: "openhab"
+    system: "yes"
+    gid: 9001
+  become: yes
+  tags: [accounts]
+
+- name: "Create new account for openhab"
+  user:
+    name: "openhab"
+    group: "openhab"
+    groups: "ssh-users"
+    create_home: "no"
+    password: "{{ vault_openhab_account_password }}"
+    system: "yes"
+    uid: 9001
+  become: yes
+  tags: [accounts]
+
+- name: Make sure the management user is member of the Openhab group
+  user:
+    name: "{{ management_user }}"
+    append: yes
+    groups: openhab
+  become: yes
+  tags: [accounts]
+
+- include_role:
+    name: dockermounts
+    tasks_from: main
+  vars:
+    mounts:
+    - { source: openhab/addons/,   mode: "774", owner: openhab, group: openhab }
+    - { source: openhab/conf/,     mode: "774", owner: openhab, group: openhab }
+    - { source: openhab/userdata/, mode: "774", owner: openhab, group: openhab }
+  tags: [mounts]
+
+- include_role:
+    name: dockercontainer
+    tasks_from: main
+  vars:
+    container_basename: "openhab"
+    container_image: "openhab/openhab"
+    container_tag: "{{ openhab.version }}"
+    #devices: "/dev/ttyUSB0"
+    network_mode: host
+    mounts:
+    - { source: /etc/localtime,               target: /etc/localtime,    read_only: "yes", type: bind }
+    - { source: /etc/timezone,                target: /etc/timezone,     read_only: "yes", type: bind }
+    - { source: /dockermnt/openhab/addons/,   target: /openhab/addons,   read_only: "no",  type: bind }
+    - { source: /dockermnt/openhab/conf/,     target: /openhab/conf/,    read_only: "no",  type: bind }
+    - { source: /dockermnt/openhab/userdata/, target: /openhab/userdata, read_only: "no",  type: bind }
+  tags: [container]
+
+- name: Wait for OpenHab to become fully initialized. This can take several minutes.
+  wait_for:
+    host: 127.0.0.1
+    connect_timeout: 5
+    delay: 0
+    state: started
+    sleep: 5
+    timeout: 900
+    port: 8080
+  tags: [container]
+
+- name: Create a cron job to create periodic back-ups
+  cron:
+    name: "Backup Openhab"
+    job: "docker exec openhab_{{ openhab.version }} /openhab/runtime/bin/backup"
+    state: present
+    user: "root"
+    hour: "2"
+    minute: "0"
+  become: yes
+  tags: [cron, backup]
+
+- name: Create a cron job to remove old back-ups
+  cron:
+    name: "Remove old Openhab backups"
+    job: "find /dockermnt/openhab/userdata/backup -name '*.zip' -type f -mtime +7 -delete"
+    state: present
+    user: "root"
+    hour: "2"
+    minute: "15"
+  become: yes
+  tags: [cron, backup]

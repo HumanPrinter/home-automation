@@ -1,0 +1,3 @@
+- hosts: openhab2
+  roles:
+  - role: openhab
