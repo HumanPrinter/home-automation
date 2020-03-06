@@ -5,7 +5,7 @@
   user:
     name: "{{ management_user }}"
     append: yes
-    group: docker
+    groups: docker
   become: yes
   tags: [docker, docker-config]
 
