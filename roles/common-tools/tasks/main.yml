@@ -1,0 +1,20 @@
+- name: Install some common tools
+  apt:
+    update_cache: yes
+    name: "{{ item }}"
+    state: present
+  become: yes
+  loop:
+  - vim
+  - git
+  tags: [common-tools]
+
+- name: Configure git
+  git_config:
+    scope: global
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+  loop:
+  - { name: "user.name",  value: "Oscar Brouwer" }
+  - { name: "user.email", value: "o_brouwer@hotmail.com" }
+  tags: [common-tools, git]
