@@ -1,4 +1,4 @@
-- name: "Create new group for openhab"
+- name: "Create new group for OpenHAB"
   group:
     name: "openhab"
     system: "yes"
@@ -10,7 +10,7 @@
   include_vars: vault.yml
   tags: [accounts]
 
-- name: "Create new account for openhab"
+- name: "Create new account for OpenHAB"
   user:
     name: "openhab"
     group: "openhab"
@@ -22,7 +22,7 @@
   become: yes
   tags: [accounts]
 
-- name: Make sure the management user is member of the Openhab group
+- name: Make sure the management user is member of the OpenHAB group
   user:
     name: "{{ management_user }}"
     append: yes
@@ -30,15 +30,15 @@
   become: yes
   tags: [accounts]
 
-- include_role:
-    name: dockermounts
-    tasks_from: main
-  vars:
-    mounts:
-    - { source: openhab/addons/,   mode: "774", owner: openhab, group: openhab }
-    - { source: openhab/conf/,     mode: "774", owner: openhab, group: openhab }
-    - { source: openhab/userdata/, mode: "774", owner: openhab, group: openhab }
-  tags: [mounts]
+- name: Clone the git repository for OpenHAB
+  git:
+    dest: /dockermnt/openhab
+    repo: 'git@ssh.dev.azure.com:v3/humanprinter/Home%20Automation/openhab'
+    clone: yes
+    update: no
+    remote: origin
+    #key_file: undefined # not required. Specify an optional private key file path, on the target host, to use for the checkout.
+  tags: [git-repo]
 
 - include_role:
     name: dockercontainer
