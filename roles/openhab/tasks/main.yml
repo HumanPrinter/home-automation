@@ -6,6 +6,10 @@
   become: yes
   tags: [accounts]
 
+- name: Include vaulted variables
+  include_vars: vault.yml
+  tags: [accounts]
+
 - name: "Create new account for openhab"
   user:
     name: "openhab"
