@@ -30,15 +30,37 @@
   become: yes
   tags: [accounts]
 
-- name: Clone the git repository for OpenHAB
+- name: Clone the git repository for OpenHAB to a temporary location
   git:
-    dest: /dockermnt/openhab
+    dest: /tmp/openhab/
     repo: 'git@ssh.dev.azure.com:v3/humanprinter/Home%20Automation/openhab'
     clone: yes
     update: no
     remote: origin
     #key_file: undefined # not required. Specify an optional private key file path, on the target host, to use for the checkout.
   tags: [git-repo]
+
+- name: Change the ownership of the cloned files
+  file:
+    path: "/tmp/openhab/{{ item }}/"
+    recurse: yes
+    owner: 'openhab'
+    group: 'openhab'
+  become: yes
+  loop:
+  - addons
+  - conf
+  - userdata
+  tags: [git-repo]
+
+- include_role:
+    name: dockermounts
+    tasks_from: main
+  vars:
+    mounts:
+    - { source: openhab/addons,   owner: 'openhab', group: 'openhab', mode: '775', type: 'directory' }
+    - { source: openhab/conf,     owner: 'openhab', group: 'openhab', mode: '775', type: 'directory' }
+    - { source: openhab/userdata, owner: 'openhab', group: 'openhab', mode: '775', type: 'directory' }
 
 - include_role:
     name: dockercontainer
@@ -67,6 +89,19 @@
     timeout: 900
     port: 8080
   tags: [container]
+
+- name: Move the git repository over the files created by OpenHAB
+  command: 
+    cmd: 'rsync -qrpEogtW /tmp/openhab/ /dockermnt/openhab/'
+  become: yes
+  tags: [container, git-repo]
+
+- name: Remove temporary git repository
+  file:
+    path: /tmp/openhab/
+    state: absent
+  become: yes
+  tags: [git-repo]
 
 - name: Create a cron job to create periodic back-ups
   cron:
