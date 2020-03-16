@@ -37,7 +37,6 @@
     clone: yes
     update: no
     remote: origin
-    #key_file: undefined # not required. Specify an optional private key file path, on the target host, to use for the checkout.
   tags: [git-repo]
 
 - name: Change the ownership of the cloned files
@@ -71,12 +70,15 @@
     container_tag: "{{ openhab.version }}"
     #devices: "/dev/ttyUSB0"
     network_mode: host
+    environment_variables:
+      OPENHAB_BACKUPS: "/backup"
     mounts:
-    - { source: /etc/localtime,               target: /etc/localtime,    read_only: "yes", type: bind }
-    - { source: /etc/timezone,                target: /etc/timezone,     read_only: "yes", type: bind }
-    - { source: /dockermnt/openhab/addons/,   target: /openhab/addons,   read_only: "no",  type: bind }
-    - { source: /dockermnt/openhab/conf/,     target: /openhab/conf/,    read_only: "no",  type: bind }
-    - { source: /dockermnt/openhab/userdata/, target: /openhab/userdata, read_only: "no",  type: bind }
+    - { source: /etc/localtime,                target: /etc/localtime,    read_only: "yes", type: bind }
+    - { source: /etc/timezone,                 target: /etc/timezone,     read_only: "yes", type: bind }
+    - { source: /dockermnt/openhab/addons/,    target: /openhab/addons,   read_only: "no",  type: bind }
+    - { source: /dockermnt/openhab/conf/,      target: /openhab/conf/,    read_only: "no",  type: bind }
+    - { source: /dockermnt/openhab/userdata/,  target: /openhab/userdata, read_only: "no",  type: bind }
+    - { source: /mnt/usbdrive/openhab_backup/, target: /backup/,          read_only: "no",  type: bind }
   tags: [container]
 
 - name: Wait for OpenHab to become fully initialized. This can take several minutes.
@@ -117,7 +119,7 @@
 - name: Create a cron job to remove old back-ups
   cron:
     name: "Remove old Openhab backups"
-    job: "find /dockermnt/openhab/userdata/backup -name '*.zip' -type f -mtime +7 -delete"
+    job: "find /mnt/usbdrive/openhab_backup -name '*.zip' -type f -mtime +7 -delete"
     state: present
     user: "root"
     hour: "2"
