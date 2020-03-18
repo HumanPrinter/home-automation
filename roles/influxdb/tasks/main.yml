@@ -67,7 +67,7 @@
 - name: Create a cron job to create periodic back-ups
   cron:
     name: "Backup Influxdb"
-    job: "mkdir $(date +%F);docker exec influxdb_{{ influxdb.version }} influxd backup -portable  -database {{ influxdb.database_name }} /backup/$(date +%F)"
+    job: "mkdir /mnt/usbdrive/influxdb_backup/$(date +%F);docker exec influxdb_{{ influxdb.version }} influxd backup -portable  -database {{ influxdb.database_name }} /backup/$(date +%F)"
     state: present
     user: "root"
     hour: "2"
