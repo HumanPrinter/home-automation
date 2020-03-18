@@ -1,5 +1,5 @@
 influxdb:
-  version: "1.7.9"
+  version: "1.7.10"
   database_name: homeautomation
   admin_username: admin
   admin_password: "{{ vault_influx_admin_password }}"
