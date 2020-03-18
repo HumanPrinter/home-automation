@@ -1,0 +1,11 @@
+- name: Deploy Docker container
+  include_role:
+    name: dockercontainer
+    tasks_from: main
+  vars:
+    container_basename: "portainer-agent"
+    container_image: "portainer/agent"
+    container_tag: "{{ portainer_agent.version }}"
+    exposed_ports: "9001:9001"
+    mounts:
+    - { source: /var/run/docker.sock, target: /var/run/docker.sock, read_only: "no", type: bind }

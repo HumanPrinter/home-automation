@@ -1,9 +1,4 @@
 - hosts: portainer_slaves
+  gather_facts: no
   roles:
-  - role: dockercontainer
-    container_basename: "portainer-agent"
-    container_image: "portainer/agent"
-    container_tag: "1.5.1"
-    exposed_ports: "9001:9001"
-    mounts:
-    - { source: /var/run/docker.sock, target: /var/run/docker.sock, read_only: "no", type: bind }
+  - role: portainer-agent
