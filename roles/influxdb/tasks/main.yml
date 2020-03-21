@@ -15,7 +15,7 @@
 
 - name: Include vaulted variables
   include_vars: vault.yml
-  tags: [prepare]
+  tags: [prepare, cron, backup]
 
 - include_role:
     name: dockercontainer
@@ -64,10 +64,20 @@
     - { source: /mnt/usbdrive/influxdb_backup/,           target: /backup/,                    read_only: "no",  type: bind }
   tags: [container]
 
+- name: Deploy the backup script for Influxdb
+  template:
+    dest: /usr/local/sbin/create_influxdb_backup.sh
+    src: create_influxdb_backup.sh.j2
+    owner: root
+    group: root
+    mode: "u=rwx,g=rx,o=r"
+  become: yes
+  tags: [cron, backup]
+      
 - name: Create a cron job to create periodic back-ups
   cron:
     name: "Backup Influxdb"
-    job: "mkdir /mnt/usbdrive/influxdb_backup/$(date +%F);docker exec influxdb_{{ influxdb.version }} influxd backup -portable  -database {{ influxdb.database_name }} /backup/$(date +%F)"
+    job: "/usr/local/sbin/create_influxdb_backup.sh"
     state: present
     user: "root"
     hour: "2"
