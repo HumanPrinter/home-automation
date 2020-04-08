@@ -69,12 +69,12 @@
             },
             {
               "params": [
-                "none"
+                "previous"
               ],
               "type": "fill"
             }
           ],
-          "measurement": "OmnikInverter_Power",
+          "measurement": "OmnikInverter_InstantPower",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -139,64 +139,60 @@
     },
     {
       "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
       "datasource": null,
-      "format": "watt",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
       "gridPos": {
-        "h": 4,
+        "h": 8,
         "w": 6,
         "x": 12,
         "y": 0
       },
       "id": 16,
-      "interval": null,
       "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
+      "options": {
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "mappings": [
+              {
+                "id": 0,
+                "op": "=",
+                "text": "0",
+                "type": 1,
+                "value": "null"
+              }
+            ],
+            "max": 2100,
+            "min": 0,
+            "nullValueMode": "connected",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 800
+                },
+                {
+                  "color": "green",
+                  "value": 1500
+                }
+              ]
+            },
+            "unit": "watt"
+          },
+          "overrides": [],
+          "values": false
         },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": true,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": true
+        "orientation": "horizontal",
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
       },
-      "tableColumn": "",
+      "pluginVersion": "6.6.2",
       "targets": [
         {
           "groupBy": [
@@ -208,7 +204,7 @@
             },
             {
               "params": [
-                "null"
+                "previous"
               ],
               "type": "fill"
             }
@@ -235,18 +231,8 @@
           "tags": []
         }
       ],
-      "thresholds": "",
       "title": "Opgewekte energie nu",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "type": "gauge"
     },
     {
       "cacheTimeout": null,
@@ -307,7 +293,7 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": true,
         "lineColor": "rgb(31, 120, 193)",
-        "show": true
+        "show": false
       },
       "tableColumn": "",
       "targets": [
@@ -382,8 +368,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 12,
-        "x": 12,
+        "w": 6,
+        "x": 18,
         "y": 4
       },
       "id": 12,
@@ -419,7 +405,7 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": true,
         "lineColor": "rgb(31, 120, 193)",
-        "show": true
+        "show": false
       },
       "tableColumn": "",
       "targets": [
@@ -549,7 +535,24 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {
+          "alias": "Voltage AC Fase 2",
+          "legend": false
+        },
+        {
+          "alias": "Voltage AC Fase 3",
+          "legend": false
+        },
+        {
+          "alias": "Voltage DC Fase 2",
+          "legend": false
+        },
+        {
+          "alias": "Voltage DC Fase 3",
+          "legend": false
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
@@ -857,7 +860,8 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 300
+          "value": 300,
+          "yaxis": "left"
         }
       ],
       "timeFrom": null,
@@ -936,7 +940,24 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {
+          "alias": "Stroom AC Fase 2",
+          "legend": false
+        },
+        {
+          "alias": "Stroom AC Fase 3",
+          "legend": false
+        },
+        {
+          "alias": "Stroom DC Fase 2",
+          "legend": false
+        },
+        {
+          "alias": "Stroom DC Fase 3",
+          "legend": false
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
@@ -1280,7 +1301,10 @@
       }
     },
     {
-      "aliasColors": {},
+      "aliasColors": {
+        "Frequentie": "green",
+        "Frequentie Fase 1-90dagen": "#6ed0e0"
+      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -1317,7 +1341,26 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {
+          "alias": "Frequentie_90d",
+          "color": "#73bf69",
+          "legend": false
+        },
+        {
+          "alias": "Frequentie Fase 1_90d",
+          "color": "#6ed0e0",
+          "legend": false
+        },
+        {
+          "alias": "Frequentie Fase 2",
+          "legend": false
+        },
+        {
+          "alias": "Frequentie Fase 3",
+          "legend": false
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
@@ -1360,6 +1403,43 @@
           "tags": []
         },
         {
+          "alias": "Frequentie_90d",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "OmnikInverter_Frequency",
+          "orderByTime": "ASC",
+          "policy": "90_days",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "frequency_all"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
           "alias": "Frequentie Fase 1",
           "groupBy": [
             {
@@ -1380,6 +1460,44 @@
           "orderByTime": "ASC",
           "policy": "one_day",
           "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "frequency_phase1"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "Frequentie Fase 1_90d",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "OmnikInverter_Frequency",
+          "orderByTime": "ASC",
+          "policy": "90_days",
+          "refId": "F",
           "resultFormat": "time_series",
           "select": [
             [
@@ -1517,7 +1635,9 @@
       }
     },
     {
-      "aliasColors": {},
+      "aliasColors": {
+        "Omnik temperatuur": "green"
+      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -1678,5 +1798,5 @@
   "timezone": "",
   "title": "Omnik Inverter Data",
   "uid": "883XNBXmz",
-  "version": 1
+  "version": 2
 }
