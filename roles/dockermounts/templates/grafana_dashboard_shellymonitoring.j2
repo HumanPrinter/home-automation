@@ -15,7 +15,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 5,
   "links": [],
   "panels": [
     {
@@ -80,7 +79,7 @@
           ],
           "measurement": "Device_Information",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -106,6 +105,92 @@
           ]
         },
         {
+          "alias": "Temperatuur Shelly1PM Wasmachine",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_LaundryRoom_WashingMachine"
+            }
+          ]
+        },
+        {
+          "alias": "Temperatuur ShellyPlugS Vaatwasser",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "I",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_Dishwasher"
+            }
+          ]
+        },
+        {
           "alias": "Temperatuur Shelly1PM Lamp 1",
           "groupBy": [
             {
@@ -123,7 +208,7 @@
           ],
           "measurement": "Device_Information",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
@@ -166,7 +251,7 @@
           ],
           "measurement": "Device_Information",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "G",
           "resultFormat": "time_series",
           "select": [
@@ -209,7 +294,7 @@
           ],
           "measurement": "Device_Information",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "C",
           "resultFormat": "time_series",
           "select": [
@@ -252,7 +337,7 @@
           ],
           "measurement": "Device_Information",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "D",
           "resultFormat": "time_series",
           "select": [
@@ -295,7 +380,7 @@
           ],
           "measurement": "Device_Information",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "F",
           "resultFormat": "time_series",
           "select": [
@@ -338,7 +423,7 @@
           ],
           "measurement": "Device_Information",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "E",
           "resultFormat": "time_series",
           "select": [
@@ -360,6 +445,92 @@
               "key": "device",
               "operator": "=",
               "value": "FF_MasterBedroom_TV"
+            }
+          ]
+        },
+        {
+          "alias": "Temperatuur ShellyPlugS TV",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "J",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_LivingDining_TV"
+            }
+          ]
+        },
+        {
+          "alias": "Temperatuur ShellyPlugS STB",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "K",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_LivingDining_STB"
             }
           ]
         }
@@ -1024,5 +1195,5 @@
   "timezone": "",
   "title": "Shelly Monitoring",
   "uid": "ktZuYeEWk",
-  "version": 14
+  "version": 1
 }
