@@ -88,7 +88,7 @@
 - name: Create a cron job to remove old back-ups
   cron:
     name: "Remove old Influxdb backups"
-    job: "find /mnt/usbdrive/influxdb_backup -name '*-*-*' -type d -mtime +7 -delete"
+    job: "find /mnt/usbdrive/influxdb_backup -name '*-*-*' -type d -mtime +14 -exec rm -rf {} /;"
     state: present
     user: "root"
     hour: "2"
