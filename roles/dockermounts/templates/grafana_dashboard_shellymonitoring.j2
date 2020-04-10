@@ -533,6 +533,92 @@
               "value": "GF_LivingDining_STB"
             }
           ]
+        },
+        {
+          "alias": "Temperatuur ShellyPlugS Computer",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "L",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "FF_Workroom_Computer"
+            }
+          ]
+        },
+        {
+          "alias": "Temperatuur Shelly2.5 Ventilatie",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "M",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "AT_StorageRoom_Ventilation"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -1136,6 +1222,92 @@
               "value": "GF_Hallway_Lights"
             }
           ]
+        },
+        {
+          "alias": "Signaalsterkte Shelly2.5 Ventilatie",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "M",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "signalstrength"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "AT_StorageRoom_Ventilation"
+            }
+          ]
+        },
+        {
+          "alias": "Signaalsterkte ShellyPlugS Computer",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "N",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "signalstrength"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "FF_Workroom_Computer"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -1195,5 +1367,5 @@
   "timezone": "",
   "title": "Shelly Monitoring",
   "uid": "ktZuYeEWk",
-  "version": 2
+  "version": 4
 }
