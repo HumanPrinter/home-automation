@@ -21,7 +21,7 @@
   vars:
     container_basename: "nodered"
     container_image: "nodered/node-red"
-    container_tag: "1.0.4-12"
+    container_tag: "{{ nodered.version }}"
     exposed_ports: "1880:1880"
     mounts:
     - { source: /dockermnt/node-red/data/, target: /data/,                       read_only: "no", type: bind }
