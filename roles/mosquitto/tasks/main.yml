@@ -1,0 +1,61 @@
+- name: "Check if the passwd-file already exists"
+  stat:
+    path: /dockermnt/mosquitto/config/passwd
+  register: passwd_stat
+  tags: [prepare]
+
+- name: Include vaulted variables
+  include_vars: vault.yml
+  tags: [prepare]
+
+- include_role:
+    name: dockermounts
+    tasks_from: main
+  vars:
+    templates:
+      - { src: mosquitto_passwd.j2, dest: mosquitto/config/passwd }
+    mounts:
+      - { source: mosquitto/config/ }
+  when: "not passwd_stat.stat.exists"
+  tags: [prepare]
+
+- include_role:
+    name: dockercontainer
+    tasks_from: main
+  vars:
+    container_basename: "mosquitto_temp"
+    container_image: "eclipse-mosquitto"
+    container_tag: "1.6.9"
+    exposed_ports: "1883:1883"
+    command: mosquitto_passwd -U /mosquitto_temp/passwd
+    cleanup: "yes"
+    detach: "no"
+    restart_policy: "no"
+    mounts:
+    - { source: /dockermnt/mosquitto/config/, target: /mosquitto_temp/, read_only: "no", type: bind }
+  when: "not passwd_stat.stat.exists"
+  tags: [prepare]
+
+- include_role:
+    name: dockermounts
+    tasks_from: main
+  vars:
+    templates:
+    - { src: mosquitto.conf.j2, dest: mosquitto/config/mosquitto.conf }
+    mounts:
+    - { source: mosquitto/config/ }
+    - { source: mosquitto/data/ }
+  tags: [container]
+
+- include_role:
+    name: dockercontainer
+    tasks_from: main
+  vars:
+    container_basename: "mosquitto"
+    container_image: "eclipse-mosquitto"
+    container_tag: "1.6.9"
+    exposed_ports: "1883:1883"
+    mounts:
+    - { source: /dockermnt/mosquitto/config/, target: /mosquitto/config/, read_only: "no", type: bind }
+    - { source: /dockermnt/mosquitto/data/,   target: /mosquitto/data/,   read_only: "no", type: bind }
+  tags: [container]

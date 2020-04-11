@@ -1,0 +1,3 @@
+mosquitto:
+  username: openhab
+  password: "{{ vault_mosquitto_password }}"
