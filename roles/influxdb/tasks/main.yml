@@ -47,7 +47,7 @@
     tasks_from: main
   vars:
     templates:
-    - { src: influxdb.conf.j2, dest: influxdb/config/influxdb.conf }
+    - { src: influxdb.conf.j2, dest: influxdb/config/influxdb.conf, mode: "644" }
   tags: [container-1]
 
 - include_role:
