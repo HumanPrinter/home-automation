@@ -18,7 +18,7 @@
   become: yes
   loop: "{{ mounts | default([]) }}"
   when: "item.type | default('directory') == 'directory'"
-  tags: [ docker-mounts]
+  tags: [docker-mounts]
 
 - name: Ensure template destinations exist
   file:

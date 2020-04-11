@@ -1,4 +1,4 @@
 - hosts: openhab
   gather_facts: no
   roles:
-    - role: mosquitto
+  - role: mosquitto

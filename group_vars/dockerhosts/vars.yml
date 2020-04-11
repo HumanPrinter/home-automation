@@ -1,3 +1,3 @@
 docker_hub:
-    username: humanprinter
-    password: "{{ vault_docker_hub_password }}"
+  username: humanprinter
+  password: "{{ vault_docker_hub_password }}"

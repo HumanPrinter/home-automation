@@ -1,4 +1,4 @@
 - hosts: openhab
   gather_facts: no
   roles:
-    - role: grafana
+  - role: grafana

@@ -13,9 +13,9 @@
     tasks_from: main
   vars:
     templates:
-      - { src: mosquitto_passwd.j2, dest: mosquitto/config/passwd }
+    - { src: mosquitto_passwd.j2, dest: mosquitto/config/passwd }
     mounts:
-      - { source: mosquitto/config/ }
+    - { source: mosquitto/config/ }
   when: "not passwd_stat.stat.exists"
   tags: [prepare]
 
