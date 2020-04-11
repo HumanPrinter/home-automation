@@ -73,7 +73,7 @@
     mode: "u=rwx,g=rx,o=r"
   become: yes
   tags: [cron, backup]
-      
+
 - name: Create a cron job to create periodic back-ups
   cron:
     name: "Backup Influxdb"
