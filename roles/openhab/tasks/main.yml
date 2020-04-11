@@ -77,7 +77,7 @@
     container_basename: "openhab"
     container_image: "openhab/openhab"
     container_tag: "{{ openhab.version }}"
-    #devices: "/dev/ttyUSB0"
+    devices: "/dev/ttyUSB0"
     network_mode: host
     environment_variables:
       OPENHAB_BACKUPS: "/backup"
@@ -104,11 +104,11 @@
   tags: [container]
 
 - name: Move the git repository over the files created by OpenHAB
-  command: 
+  command:
     cmd: 'rsync -qrpEogtW /tmp/openhab/ /dockermnt/openhab/'
   become: yes
   when: not git_repo.stat.exists
-  tags: [container, git-repo]
+  tags: [git-repo]
 
 - name: Remove temporary git repository
   file:
