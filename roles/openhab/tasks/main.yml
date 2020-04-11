@@ -36,7 +36,7 @@
   register: git_repo
   tags: [git-repo]
 
-- name: Clone the git repository for OpenHAB to a temporary location
+- name: Clone the git repository for OpenHAB to a temporary location # noqa 401 The latest version is the right version
   git:
     dest: /tmp/openhab/
     repo: 'git@ssh.dev.azure.com:v3/humanprinter/Home%20Automation/openhab'
