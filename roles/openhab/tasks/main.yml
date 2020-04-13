@@ -8,14 +8,14 @@
 
 - name: Include vaulted variables
   include_vars: vault.yml
-  tags: [accounts]
+  tags: [accounts, samba-share]
 
 - name: "Create new account for OpenHAB"
   user:
     name: "openhab"
     group: "openhab"
-    groups: "ssh-users"
     create_home: "no"
+    shell: "/usr/sbin/nologin"
     password: "{{ vault_openhab_account_password }}"
     system: "yes"
     uid: 9001
@@ -29,6 +29,59 @@
     groups: openhab
   become: yes
   tags: [accounts]
+
+- name: Install Samba
+  apt:
+    update_cache: yes
+    name: "{{ item }}"
+    state: present
+  become: yes
+  loop:
+  - samba
+  - samba-common-bin
+  tags: [samba-share]
+
+- name: Add share to samba config
+  blockinfile:
+    path: /etc/samba/smb.conf
+    insertafter: EOF
+    marker: "## {mark} ANSIBLE MANAGED BLOCK - OPENHAB SHARE ##" # not required. The marker line template. "{mark}" will be replaced with the values in marker_begin (default="BEGIN") and marker_end (default="END").
+    state: present
+    block: |
+      [openHAB2]
+        comment=openHAB2 data
+        path=/dockermnt/openhab
+        browseable=Yes
+        writeable=Yes
+        only guest=no
+        public=no
+        create mask=0777
+        directory mask=0777
+  become: yes
+  register: config_result
+  tags: [samba-share]
+
+- name: Get samba users
+  command: pdbedit -L
+  become: yes
+  changed_when: false
+  register: samba_users
+  tags: [samba-share]
+
+- name: Create samba user for OpenHab
+  shell: "(echo {{ samba.share_password }}; echo {{ samba.share_password }}) | smbpasswd -a -s {{ samba.share_username}}"
+  become: yes
+  when: "not samba_users.stdout is match('openhab:\\d+:')"
+  register: adduser_result
+  tags: [samba-share]
+
+- name: Restart samba
+  systemd:
+    name: smbd.service
+    state: restarted
+  become: yes
+  when: config_result.changed or adduser_result.changed
+  tags: [samba-share]
 
 - name: Check if there is already a git repository present
   stat:

@@ -1,2 +1,6 @@
 openhab:
   version: "2.5.2"
+
+samba:
+  share_username: openhab
+  share_password: "{{ vault_samba_share_password }}"
