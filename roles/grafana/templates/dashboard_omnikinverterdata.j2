@@ -2,6 +2,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:11",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -192,7 +193,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.6.2",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "groupBy": [
@@ -277,7 +278,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -389,7 +389,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -980,7 +979,7 @@
           ],
           "measurement": "OmnikInverter_Current_AC",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -1017,7 +1016,7 @@
           ],
           "measurement": "OmnikInverter_Current_AC",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
@@ -1054,7 +1053,7 @@
           ],
           "measurement": "OmnikInverter_Current_AC",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "C",
           "resultFormat": "time_series",
           "select": [
@@ -1091,7 +1090,7 @@
           ],
           "measurement": "OmnikInverter_Current_AC",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "D",
           "resultFormat": "time_series",
           "select": [
@@ -1128,7 +1127,7 @@
           ],
           "measurement": "OmnikInverter_Current_DC",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "E",
           "resultFormat": "time_series",
           "select": [
@@ -1165,7 +1164,7 @@
           ],
           "measurement": "OmnikInverter_Current_DC",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "F",
           "resultFormat": "time_series",
           "select": [
@@ -1202,7 +1201,7 @@
           ],
           "measurement": "OmnikInverter_Current_DC",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "G",
           "resultFormat": "time_series",
           "select": [
@@ -1239,7 +1238,7 @@
           ],
           "measurement": "OmnikInverter_Current_DC",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "H",
           "resultFormat": "time_series",
           "select": [
@@ -1798,5 +1797,8 @@
   "timezone": "",
   "title": "Omnik Inverter Data",
   "uid": "883XNBXmz",
-  "version": 2
+  "variables": {
+    "list": []
+  },
+  "version": 1
 }
