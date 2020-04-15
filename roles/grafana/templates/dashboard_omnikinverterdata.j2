@@ -142,7 +142,7 @@
       "cacheTimeout": null,
       "datasource": null,
       "gridPos": {
-        "h": 8,
+        "h": 5,
         "w": 6,
         "x": 12,
         "y": 0
@@ -184,6 +184,7 @@
                 }
               ]
             },
+            "title": "",
             "unit": "watt"
           },
           "overrides": [],
@@ -232,7 +233,7 @@
           "tags": []
         }
       ],
-      "title": "Opgewekte energie nu",
+      "title": "Opgewekt vermogen nu",
       "type": "gauge"
     },
     {
@@ -267,10 +268,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
+          "$$hashKey": "object:388",
           "name": "value to text",
           "value": 1
         },
         {
+          "$$hashKey": "object:389",
           "name": "range to text",
           "value": 2
         }
@@ -340,6 +343,7 @@
       "valueFontSize": "150%",
       "valueMaps": [
         {
+          "$$hashKey": "object:391",
           "op": "=",
           "text": "0 kWh",
           "value": "null"
@@ -378,10 +382,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
+          "$$hashKey": "object:647",
           "name": "value to text",
           "value": 1
         },
         {
+          "$$hashKey": "object:648",
           "name": "range to text",
           "value": 2
         }
@@ -451,12 +457,129 @@
       "valueFontSize": "150%",
       "valueMaps": [
         {
+          "$$hashKey": "object:650",
           "op": "=",
           "text": "0 kWh",
           "value": "null"
         }
       ],
       "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "watt",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 12,
+        "y": 5
+      },
+      "id": 17,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:314",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:315",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.7.2",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "OmnikInverter_InstantPower",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": "",
+      "title": "Maximaal opgewekt vermogen vandaag",
+      "type": "singlestat",
+      "valueFontSize": "110%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:317",
+          "op": "=",
+          "text": "0",
+          "value": "null"
+        }
+      ],
+      "valueName": "max"
     },
     {
       "alert": {
@@ -1800,5 +1923,5 @@
   "variables": {
     "list": []
   },
-  "version": 1
+  "version": 2
 }
