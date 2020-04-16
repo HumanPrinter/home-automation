@@ -27,6 +27,7 @@
   docker_container:
     name: "{{ container_basename }}_{{ container_tag }}"
     image: "{{ container_image }}:{{ container_tag }}"
+    capabilities: "{{ capabilities | default([]) }}"
     cleanup: "{{ cleanup | default('no') }}"
     detach: "{{ detach | default('yes') }}"
     devices: "{{ devices | default([]) }}"
