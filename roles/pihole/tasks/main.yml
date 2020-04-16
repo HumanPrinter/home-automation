@@ -36,11 +36,11 @@
     container_image: "pihole/pihole"
     container_tag: "{{ pihole.version }}"
     capabilities:
-      - NET_ADMIN
+    - NET_ADMIN
     network_mode: "host"
     dns_servers:
-      - 127.0.0.1
-      - 192.168.2.254
+    - 127.0.0.1
+    - 192.168.2.254
     environment_variables:
       TZ: "Europe/Amsterdam"
       WEBPASSWORD: "{{ pihole.admin_password }}"

@@ -2,7 +2,7 @@
   stat:
     path: /dockermnt/mosquitto/config/passwd
   register: passwd_stat
-  tags: [prepare]
+  tags: [prepare, docker-mounts]
 
 - name: Include vaulted variables
   include_vars: vault.yml
@@ -17,7 +17,7 @@
     mounts:
     - { source: mosquitto/config/ }
   when: "not passwd_stat.stat.exists"
-  tags: [prepare]
+  tags: [prepare, docker-mounts]
 
 - include_role:
     name: dockercontainer
@@ -34,7 +34,7 @@
     mounts:
     - { source: /dockermnt/mosquitto/config/, target: /mosquitto_temp/, read_only: "no", type: bind }
   when: "not passwd_stat.stat.exists"
-  tags: [prepare]
+  tags: [prepare, docker-container]
 
 - include_role:
     name: dockermounts
@@ -45,7 +45,7 @@
     mounts:
     - { source: mosquitto/config/ }
     - { source: mosquitto/data/ }
-  tags: [container]
+  tags: [deploy, docker-mounts]
 
 - include_role:
     name: dockercontainer
@@ -58,4 +58,4 @@
     mounts:
     - { source: /dockermnt/mosquitto/config/, target: /mosquitto/config/, read_only: "no", type: bind }
     - { source: /dockermnt/mosquitto/data/,   target: /mosquitto/data/,   read_only: "no", type: bind }
-  tags: [container]
+  tags: [deploy, docker-container]

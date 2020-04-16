@@ -2,7 +2,7 @@
   stat:
     path: /dockermnt/influxdb/data/data/
   register: database_stat
-  tags: [prepare]
+  tags: [prepare, docker-mounts]
 
 - include_role:
     name: dockermounts
@@ -11,7 +11,7 @@
     mounts:
     - { source: influxdb/data/ }
   when: "not database_stat.stat.exists"
-  tags: [prepare]
+  tags: [prepare, docker-mounts]
 
 - name: Include vaulted variables
   include_vars: vault.yml
@@ -40,7 +40,7 @@
     mounts:
     - { source: /dockermnt/influxdb/data/, target: /var/lib/influxdb/, read_only: "no", type: bind }
   when: "not database_stat.stat.exists"
-  tags: [prepare]
+  tags: [prepare, docker-container]
 
 - include_role:
     name: dockermounts
@@ -48,7 +48,7 @@
   vars:
     templates:
     - { src: influxdb.conf.j2, dest: influxdb/config/influxdb.conf, mode: "644" }
-  tags: [container-1]
+  tags: [deploy, docker-mounts]
 
 - include_role:
     name: dockercontainer
@@ -62,7 +62,7 @@
     - { source: /dockermnt/influxdb/config/influxdb.conf, target: /etc/influxdb/influxdb.conf, read_only: "yes", type: bind }
     - { source: /dockermnt/influxdb/data/,                target: /var/lib/influxdb/,          read_only: "no",  type: bind }
     - { source: /mnt/usbdrive/influxdb_backup/,           target: /backup/,                    read_only: "no",  type: bind }
-  tags: [container]
+  tags: [deploy, docker-container]
 
 - name: Deploy the backup script for Influxdb
   template:

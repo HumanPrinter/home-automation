@@ -45,7 +45,7 @@
   blockinfile:
     path: /etc/samba/smb.conf
     insertafter: EOF
-    marker: "## {mark} ANSIBLE MANAGED BLOCK - OPENHAB SHARE ##" # not required. The marker line template. "{mark}" will be replaced with the values in marker_begin (default="BEGIN") and marker_end (default="END").
+    marker: "## {mark} ANSIBLE MANAGED BLOCK - OPENHAB SHARE ##"
     state: present
     block: |
       [openHAB2]
@@ -58,7 +58,7 @@
         create mask=0777
         directory mask=0777
   become: yes
-  register: config_result
+  notify: Restart samba
   tags: [samba-share]
 
 - name: Get samba users
@@ -69,18 +69,10 @@
   tags: [samba-share]
 
 - name: Create samba user for OpenHab
-  shell: "(echo {{ samba.share_password }}; echo {{ samba.share_password }}) | smbpasswd -a -s {{ samba.share_username}}"
+  shell: "(echo {{ samba.share_password }}; echo {{ samba.share_password }}) | smbpasswd -a -s {{ samba.share_username }}"
   become: yes
   when: "not samba_users.stdout is match('openhab:\\d+:')"
-  register: adduser_result
-  tags: [samba-share]
-
-- name: Restart samba
-  systemd:
-    name: smbd.service
-    state: restarted
-  become: yes
-  when: config_result.changed or adduser_result.changed
+  notify: Restart samba
   tags: [samba-share]
 
 - name: Check if there is already a git repository present
@@ -122,6 +114,7 @@
     - { source: openhab/conf,       owner: 'openhab', group: 'openhab', mode: '775', type: 'directory' }
     - { source: openhab/lib/jsr223, owner: 'openhab', group: 'openhab', mode: '775', type: 'directory' }
     - { source: openhab/userdata,   owner: 'openhab', group: 'openhab', mode: '775', type: 'directory' }
+  tags: [docker-mounts]
 
 - include_role:
     name: dockercontainer
@@ -143,7 +136,7 @@
     - { source: /dockermnt/openhab/lib/jsr223/, target: /openhab/lib/jsr223/, read_only: "no",  type: bind }
     - { source: /dockermnt/openhab/userdata/,   target: /openhab/userdata,    read_only: "no",  type: bind }
     - { source: /mnt/usbdrive/openhab_backup/,  target: /backup/,             read_only: "no",  type: bind }
-  tags: [container]
+  tags: [docker-container]
 
 - name: Wait for OpenHab to become fully initialized. This can take several minutes.
   wait_for:
@@ -154,7 +147,7 @@
     sleep: 5
     timeout: 900
     port: 8080
-  tags: [container]
+  tags: [docker-container]
 
 - name: Move the git repository over the files created by OpenHAB
   command:

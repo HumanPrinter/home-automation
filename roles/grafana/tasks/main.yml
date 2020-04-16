@@ -1,6 +1,6 @@
 - name: Include vaulted variables
   include_vars: vault.yml
-  tags: [grafana, config]
+  tags: [docker-mounts]
 
 - include_role:
     name: dockermounts
@@ -15,7 +15,7 @@
     - { src: dashboard_shellymonitoring.j2,         dest: grafana/config/provisioning/dashboards/shellymonitoring.json }
     - { src: dashboard_slimmemeter.j2,              dest: grafana/config/provisioning/dashboards/slimmemeter.json }
     - { src: dashboard_stroomverbruikhuishouden.j2, dest: grafana/config/provisioning/dashboards/stroomverbruikhuishouden.json }
-  tags: [grafana, config]
+  tags: [docker-mounts]
 
 - include_role:
     name: dockercontainer
@@ -29,4 +29,4 @@
       GF_INSTALL_PLUGINS: grafana-piechart-panel
     mounts:
     - { source: /dockermnt/grafana/config/, target: /etc/grafana/, read_only: "yes", type: bind }
-  tags: [grafana, container]
+  tags: [docker-container]

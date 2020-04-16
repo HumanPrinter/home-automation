@@ -41,7 +41,7 @@
     container_image: "humanprinter.azurecr.io/pi/openvpn"
     container_tag: "{{ openvpn.version }}"
     capabilities:
-      - NET_ADMIN
+    - NET_ADMIN
     exposed_ports: "1194:1194/udp"
     mounts:
     - { source: /dockermnt/openvpn/conf, target: /etc/openvpn, read_only: "no", type: bind }

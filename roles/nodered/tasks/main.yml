@@ -14,6 +14,7 @@
     mounts:
     - { source: node-red/data/, group: pi }
     - { source: node-red/home/, group: pi }
+  tags: [docker-mounts]
 
 - include_role:
     name: dockercontainer
@@ -26,3 +27,4 @@
     mounts:
     - { source: /dockermnt/node-red/data/, target: /data/,                       read_only: "no", type: bind }
     - { source: /dockermnt/node-red/home/.ssh/, target: /usr/src/node-red/.ssh/, read_only: "no", type: bind }
+  tags: [docker-container]
