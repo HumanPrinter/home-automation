@@ -1,0 +1,4 @@
+- hosts: pihole2
+  gather_facts: no
+  roles:
+  - role: portainer-server
