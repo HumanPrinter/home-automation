@@ -1,4 +1,4 @@
-- hosts: pihole2
+- hosts: pihole
   roles:
   - role: ssh
   - role: common-tasks

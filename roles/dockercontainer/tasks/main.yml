@@ -31,6 +31,7 @@
     cleanup: "{{ cleanup | default('no') }}"
     detach: "{{ detach | default('yes') }}"
     devices: "{{ devices | default([]) }}"
+    dns_servers: "{{ dns_servers | default([]) }}"
     env: "{{ environment_variables | default({}) }}"
     command: "{{ command | default(None) }}"
     network_mode: "{{ network_mode | default('bridge') }}"
