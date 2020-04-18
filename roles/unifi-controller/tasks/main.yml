@@ -1,0 +1,32 @@
+- name: Create mount directories
+  include_role:
+    name: dockermounts
+    tasks_from: main
+  vars:
+    mounts:
+    - { source: unifi/ }
+  tags: [docker-mounts]
+
+- name: Deploy Docker container
+  include_role:
+    name: dockercontainer
+    tasks_from: main
+  vars:
+    container_basename: "unifi_controller"
+    container_image: "linuxserver/unifi-controller"
+    container_tag: "{{ unifi_controller.version }}"
+    exposed_ports:
+    - "3478:3478/udp"
+    - "10001:10001/udp"
+    - "8080:8080"
+    - "8081:8081"
+    - "8443:8443"
+    - "8843:8843"
+    - "8880:8880"
+    - "6789:6789"
+    environment_variables:
+      PUID: "{{ uid_management_user | string }}"
+      PGID: "{{ gid_management_user | string }}"
+    mounts:
+    - { source: /dockermnt/unifi, target: /config, read_only: "no", type: bind }
+  tags: [docker-container]
