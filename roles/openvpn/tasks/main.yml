@@ -9,6 +9,8 @@
   vars:
     mounts:
     - { source: openvpn/ }
+    templates:
+    - { src: create-new-ovpn-profile.sh.j2, dest: openvpn/scripts/create-new-ovpn-profile.sh }
   tags: [docker-mounts]
 
 - name: Check if there is already a git repository present
