@@ -1,3 +1,10 @@
+- name: "Store the public key as authorized key"
+  authorized_key:
+    user: "{{ management_user }}"
+    key: "{{ ssh.public_key }}"
+    state: present
+  tags: [ssh]
+
 - name: "Create group for SSH-users"
   group:
     name: ssh-users
