@@ -46,5 +46,7 @@
     - NET_ADMIN
     exposed_ports: "1194:1194/udp"
     mounts:
-    - { source: /dockermnt/openvpn/conf, target: /etc/openvpn, read_only: "no", type: bind }
+    - { source: /dockermnt/openvpn/conf, target: /etc/openvpn,   read_only: "no",  type: bind }
+    - { source: /etc/localtime,          target: /etc/localtime, read_only: "yes", type: bind }
+    - { source: /etc/timezone,           target: /etc/timezone,  read_only: "yes", type: bind }
   tags: [docker-container]

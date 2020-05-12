@@ -37,6 +37,7 @@
       INFLUXDB_USER_PASSWORD: "{{ influxdb.default_userpassword }}"
       INFLUXDB_READ_USER: "{{ influxdb.default_readusername }}"
       INFLUXDB_READ_USER_PASSWORD: "{{ influxdb.default_readuserpassword }}"
+      TZ: "Europe/Amsterdam"
     mounts:
     - { source: /dockermnt/influxdb/data/, target: /var/lib/influxdb/, read_only: "no", type: bind }
   when: "not database_stat.stat.exists"
@@ -58,6 +59,8 @@
     container_image: "influxdb"
     container_tag: "{{ influxdb.version }}"
     exposed_ports: "8086:8086"
+    environment_variables:
+      TZ: "Europe/Amsterdam"
     mounts:
     - { source: /dockermnt/influxdb/config/influxdb.conf, target: /etc/influxdb/influxdb.conf, read_only: "yes", type: bind }
     - { source: /dockermnt/influxdb/data/,                target: /var/lib/influxdb/,          read_only: "no",  type: bind }

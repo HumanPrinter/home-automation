@@ -27,6 +27,7 @@
     exposed_ports: "3000:3000"
     environment_variables:
       GF_INSTALL_PLUGINS: grafana-piechart-panel
+      TZ: "Europe/Amsterdam"
     mounts:
     - { source: /dockermnt/grafana/config/, target: /etc/grafana/, read_only: "yes", type: bind }
   tags: [docker-container]

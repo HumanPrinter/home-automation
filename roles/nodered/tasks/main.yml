@@ -24,6 +24,8 @@
     container_image: "nodered/node-red"
     container_tag: "{{ nodered.version }}"
     exposed_ports: "1880:1880"
+    environment_variables:
+      TZ: "Europe/Amsterdam"
     mounts:
     - { source: /dockermnt/node-red/data/, target: /data/,                       read_only: "no", type: bind }
     - { source: /dockermnt/node-red/home/.ssh/, target: /usr/src/node-red/.ssh/, read_only: "no", type: bind }
