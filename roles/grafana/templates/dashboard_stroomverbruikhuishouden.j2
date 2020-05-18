@@ -2,6 +2,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:1175",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -15,7 +16,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 4,
   "links": [],
   "panels": [
     {
@@ -45,7 +45,7 @@
       "fontSize": "80%",
       "format": "watt",
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 5,
         "x": 0,
         "y": 1
@@ -64,7 +64,6 @@
       "links": [],
       "maxDataPoints": 3,
       "nullPointMode": "connected",
-      "options": {},
       "pieType": "pie",
       "strokeWidth": 1,
       "targets": [
@@ -410,6 +409,55 @@
               "value": "FF_MasterBedroom_TV"
             }
           ]
+        },
+        {
+          "alias": "Koelkast groot",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_RefrigeratorLarge"
+            }
+          ]
         }
       ],
       "timeFrom": "now/d",
@@ -460,7 +508,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -590,7 +637,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -703,6 +749,135 @@
         "y": 1
       },
       "hideTimeOverride": true,
+      "id": 29,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Wasmachine",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_LaundryRoom_WashingMachine"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/d",
+      "timeShift": null,
+      "title": "Wasmachine vandaag",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 17,
+        "y": 1
+      },
+      "hideTimeOverride": true,
       "id": 41,
       "interval": "",
       "links": [],
@@ -720,7 +895,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -851,7 +1025,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -964,16 +1137,18 @@
         "y": 3
       },
       "hideTimeOverride": true,
-      "id": 29,
+      "id": 48,
       "interval": "",
       "links": [],
       "mappingType": 1,
       "mappingTypes": [
         {
+          "$$hashKey": "object:1446",
           "name": "value to text",
           "value": 1
         },
         {
+          "$$hashKey": "object:1447",
           "name": "range to text",
           "value": 2
         }
@@ -981,7 +1156,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -1005,7 +1179,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "alias": "Wasmachine",
+          "alias": "Koelkast Groot",
           "groupBy": [
             {
               "params": [
@@ -1049,7 +1223,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "GF_LaundryRoom_WashingMachine"
+              "value": "GF_Kitchen_RefrigeratorLarge"
             }
           ]
         }
@@ -1057,142 +1231,12 @@
       "thresholds": "",
       "timeFrom": "now/d",
       "timeShift": null,
-      "title": "Wasmachine vandaag",
+      "title": "Koelkast groot vandaag",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "decimals": 2,
-      "format": "kwatth",
-      "gauge": {
-        "maxValue": 1,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 5,
-        "y": 5
-      },
-      "hideTimeOverride": true,
-      "id": 44,
-      "interval": "",
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.3.5",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "Verlichting",
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "previous"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "PowerConsumption",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "watt"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  " / 1000"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "category",
-              "operator": "=",
-              "value": "Lighting"
-            }
-          ]
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": "now/d",
-      "timeShift": null,
-      "title": "Verlichting vandaag",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
+          "$$hashKey": "object:1449",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -1221,8 +1265,8 @@
       "gridPos": {
         "h": 2,
         "w": 4,
-        "x": 9,
-        "y": 5
+        "x": 13,
+        "y": 3
       },
       "hideTimeOverride": true,
       "id": 34,
@@ -1242,7 +1286,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -1331,13 +1374,143 @@
       "valueName": "total"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 2,
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 5,
+        "y": 5
+      },
+      "hideTimeOverride": true,
+      "id": 44,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Verlichting",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "Lighting"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/d",
+      "timeShift": null,
+      "title": "Verlichting vandaag",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 26,
       "panels": [],
@@ -1357,10 +1530,10 @@
       "fontSize": "80%",
       "format": "watt",
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 5,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "hideTimeOverride": true,
       "id": 15,
@@ -1376,7 +1549,6 @@
       "links": [],
       "maxDataPoints": 3,
       "nullPointMode": "connected",
-      "options": {},
       "pieType": "pie",
       "strokeWidth": 1,
       "targets": [
@@ -1722,6 +1894,55 @@
               "value": "Lighting"
             }
           ]
+        },
+        {
+          "alias": "Koelkast groot",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_RefrigeratorLarge"
+            }
+          ]
         }
       ],
       "timeFrom": "now/M",
@@ -1752,7 +1973,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 8
+        "y": 9
       },
       "hideTimeOverride": true,
       "id": 13,
@@ -1772,7 +1993,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -1884,7 +2104,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 8
+        "y": 9
       },
       "hideTimeOverride": true,
       "id": 20,
@@ -1904,7 +2124,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -2016,7 +2235,138 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 8
+        "y": 9
+      },
+      "hideTimeOverride": true,
+      "id": 30,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Wasmachine",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_LaundryRoom_WashingMachine"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/M",
+      "timeShift": null,
+      "title": "Wasmachine deze maand",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 3.5,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 17,
+        "y": 9
       },
       "hideTimeOverride": true,
       "id": 42,
@@ -2036,7 +2386,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -2146,7 +2495,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 10
+        "y": 11
       },
       "hideTimeOverride": true,
       "id": 14,
@@ -2166,7 +2515,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -2278,19 +2626,21 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 10
+        "y": 11
       },
       "hideTimeOverride": true,
-      "id": 30,
+      "id": 49,
       "interval": "",
       "links": [],
       "mappingType": 1,
       "mappingTypes": [
         {
+          "$$hashKey": "object:1861",
           "name": "value to text",
           "value": 1
         },
         {
+          "$$hashKey": "object:1862",
           "name": "range to text",
           "value": 2
         }
@@ -2298,7 +2648,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -2322,7 +2671,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "alias": "Wasmachine",
+          "alias": "Koelkast groot",
           "groupBy": [
             {
               "params": [
@@ -2366,7 +2715,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "GF_LaundryRoom_WashingMachine"
+              "value": "GF_Kitchen_RefrigeratorLarge"
             }
           ]
         }
@@ -2374,142 +2723,12 @@
       "thresholds": "",
       "timeFrom": "now/M",
       "timeShift": null,
-      "title": "Wasmachine deze maand",
+      "title": "Koelkast groot deze maand",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
         {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "decimals": null,
-      "format": "kwatth",
-      "gauge": {
-        "maxValue": 1,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 5,
-        "y": 12
-      },
-      "hideTimeOverride": true,
-      "id": 45,
-      "interval": "",
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.3.5",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "Verlichting",
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "previous"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "PowerConsumption",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "watt"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  " / 1000"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "category",
-              "operator": "=",
-              "value": "Lighting"
-            }
-          ]
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": "now/M",
-      "timeShift": null,
-      "title": "Verlichting deze maand",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
+          "$$hashKey": "object:1864",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -2540,8 +2759,8 @@
       "gridPos": {
         "h": 2,
         "w": 4,
-        "x": 9,
-        "y": 12
+        "x": 13,
+        "y": 11
       },
       "hideTimeOverride": true,
       "id": 35,
@@ -2561,7 +2780,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -2650,13 +2868,143 @@
       "valueName": "total"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": null,
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 5,
+        "y": 13
+      },
+      "hideTimeOverride": true,
+      "id": 45,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Verlichting",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "Lighting"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/M",
+      "timeShift": null,
+      "title": "Verlichting deze maand",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 16
       },
       "id": 24,
       "panels": [],
@@ -2676,10 +3024,10 @@
       "fontSize": "80%",
       "format": "watt",
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 5,
         "x": 0,
-        "y": 15
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 18,
@@ -2695,7 +3043,6 @@
       "links": [],
       "maxDataPoints": 3,
       "nullPointMode": "connected",
-      "options": {},
       "pieType": "pie",
       "strokeWidth": 1,
       "targets": [
@@ -3041,6 +3388,55 @@
               "value": "FF_MasterBedroom_TV"
             }
           ]
+        },
+        {
+          "alias": "Koelkast groot",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_RefrigeratorLarge"
+            }
+          ]
         }
       ],
       "timeFrom": "now/y",
@@ -3071,7 +3467,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 15
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 16,
@@ -3091,7 +3487,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3201,7 +3596,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 15
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 21,
@@ -3221,7 +3616,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3331,7 +3725,136 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 15
+        "y": 17
+      },
+      "hideTimeOverride": true,
+      "id": 31,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Wasmachine",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_LaundryRoom_WashingMachine"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/y",
+      "timeShift": null,
+      "title": "Wasmachine dit jaar",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 17,
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 43,
@@ -3351,7 +3874,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3461,7 +3983,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 17
+        "y": 19
       },
       "hideTimeOverride": true,
       "id": 17,
@@ -3481,7 +4003,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3591,10 +4112,10 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 17
+        "y": 19
       },
       "hideTimeOverride": true,
-      "id": 31,
+      "id": 50,
       "interval": "",
       "links": [],
       "mappingType": 1,
@@ -3611,7 +4132,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3635,7 +4155,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "alias": "Wasmachine",
+          "alias": "Koelkast groot",
           "groupBy": [
             {
               "params": [
@@ -3679,7 +4199,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "GF_LaundryRoom_WashingMachine"
+              "value": "GF_Kitchen_RefrigeratorLarge"
             }
           ]
         }
@@ -3687,138 +4207,7 @@
       "thresholds": "",
       "timeFrom": "now/y",
       "timeShift": null,
-      "title": "Wasmachine dit jaar",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "total"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "decimals": 2,
-      "format": "kwatth",
-      "gauge": {
-        "maxValue": 1,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": false
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 5,
-        "y": 19
-      },
-      "hideTimeOverride": true,
-      "id": 46,
-      "interval": "",
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "pluginVersion": "6.3.5",
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "alias": "Verlichting",
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "previous"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "PowerConsumption",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "watt"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  " / 1000"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "category",
-              "operator": "=",
-              "value": "Lighting"
-            }
-          ]
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": "now/y",
-      "timeShift": null,
-      "title": "Verlichting dit jaar",
+      "title": "Koelkast groot dit jaar",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -3851,7 +4240,7 @@
       "gridPos": {
         "h": 2,
         "w": 4,
-        "x": 9,
+        "x": 13,
         "y": 19
       },
       "hideTimeOverride": true,
@@ -3872,7 +4261,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "pluginVersion": "6.3.5",
       "postfix": "",
       "postfixFontSize": "50%",
@@ -3961,13 +4349,143 @@
       "valueName": "total"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 2,
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 5,
+        "y": 21
+      },
+      "hideTimeOverride": true,
+      "id": 46,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Verlichting",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "Lighting"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/y",
+      "timeShift": null,
+      "title": "Verlichting dit jaar",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 24
       },
       "id": 9,
       "panels": [],
@@ -3986,7 +4504,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 22
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 2,
@@ -4115,7 +4633,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 22
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 3,
@@ -4244,7 +4762,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 28
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 47,
@@ -4374,7 +4892,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 37
       },
       "id": 7,
       "panels": [],
@@ -4393,7 +4911,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 22,
@@ -4522,10 +5040,10 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 38
       },
       "hiddenSeries": false,
-      "id": 33,
+      "id": 51,
       "interval": "",
       "legend": {
         "alignAsTable": false,
@@ -4554,7 +5072,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Wasdroger",
+          "alias": "Koelkast groot",
           "groupBy": [
             {
               "params": [
@@ -4572,7 +5090,7 @@
           "measurement": "PowerConsumption",
           "orderByTime": "ASC",
           "policy": "default",
-          "refId": "B",
+          "refId": "A",
           "resultFormat": "time_series",
           "select": [
             [
@@ -4592,7 +5110,7 @@
             {
               "key": "device",
               "operator": "=",
-              "value": "GF_LaundryRoom_TumbleDryer"
+              "value": "GF_Kitchen_RefrigeratorLarge"
             }
           ]
         }
@@ -4601,7 +5119,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Stroomverbruik wasdroger",
+      "title": "Stroomverbruik koelkasten",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -4617,6 +5135,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2725",
           "decimals": null,
           "format": "watt",
           "label": "Stroomverbruik",
@@ -4626,6 +5145,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:2726",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -4651,7 +5171,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 41
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 32,
@@ -4769,13 +5289,142 @@
       }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 44
+      },
+      "hiddenSeries": false,
+      "id": 33,
+      "interval": "",
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Wasdroger",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_LaundryRoom_TumbleDryer"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Stroomverbruik wasdroger",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "watt",
+          "label": "Stroomverbruik",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 47
+        "y": 50
       },
       "id": 38,
       "panels": [],
@@ -4794,7 +5443,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 48
+        "y": 51
       },
       "hiddenSeries": false,
       "id": 40,
@@ -4940,5 +5589,8 @@
   "timezone": "",
   "title": "Stroomverbruik huishouden",
   "uid": "8efIPotZz",
-  "version": 22
+  "variables": {
+    "list": []
+  },
+  "version": 1
 }

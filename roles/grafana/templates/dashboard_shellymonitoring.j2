@@ -2,6 +2,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:11",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -617,6 +618,49 @@
               "key": "device",
               "operator": "=",
               "value": "AT_StorageRoom_Ventilation"
+            }
+          ]
+        },
+        {
+          "alias": "Temperatuur ShellyPlugS Koelkast Groot",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "N",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_RefrigeratorLarge"
             }
           ]
         }
@@ -1308,6 +1352,49 @@
               "value": "FF_Workroom_Computer"
             }
           ]
+        },
+        {
+          "alias": "Signaalsterkte ShellyPlugS Koelkast Groot",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "O",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "signalstrength"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_RefrigeratorLarge"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -1367,5 +1454,8 @@
   "timezone": "",
   "title": "Shelly Monitoring",
   "uid": "ktZuYeEWk",
-  "version": 4
+  "variables": {
+    "list": []
+  },
+  "version": 1
 }
