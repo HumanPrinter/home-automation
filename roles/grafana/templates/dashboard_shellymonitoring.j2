@@ -663,6 +663,49 @@
               "value": "GF_Kitchen_RefrigeratorLarge"
             }
           ]
+        },
+        {
+          "alias": "Temperatuur ShellyPlugS Koelkast Klein",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "O",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_RefrigeratorSmall"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -1395,6 +1438,49 @@
               "value": "GF_Kitchen_RefrigeratorLarge"
             }
           ]
+        },
+        {
+          "alias": "Signaalsterkte ShellyPlugS Koelkast Klein",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "P",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "signalstrength"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_RefrigeratorSmall"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -1457,5 +1543,5 @@
   "variables": {
     "list": []
   },
-  "version": 2
+  "version": 3
 }

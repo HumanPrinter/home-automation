@@ -45,7 +45,7 @@
       "fontSize": "80%",
       "format": "watt",
       "gridPos": {
-        "h": 7,
+        "h": 6,
         "w": 5,
         "x": 0,
         "y": 1
@@ -215,7 +215,7 @@
           ]
         },
         {
-          "alias": "Vaatwasser",
+          "alias": "Keukenapparatuur",
           "groupBy": [
             {
               "params": [
@@ -257,9 +257,15 @@
           ],
           "tags": [
             {
-              "key": "device",
+              "key": "category",
               "operator": "=",
-              "value": "GF_Kitchen_Dishwasher"
+              "value": "Kitchen_appliances"
+            },
+            {
+              "condition": "AND",
+              "key": "location",
+              "operator": "=",
+              "value": "GF_Kitchen"
             }
           ]
         },
@@ -407,55 +413,6 @@
               "key": "device",
               "operator": "=",
               "value": "FF_MasterBedroom_TV"
-            }
-          ]
-        },
-        {
-          "alias": "Koelkast groot",
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "previous"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "PowerConsumption",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "H",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "watt"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  " / 1000"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "device",
-              "operator": "=",
-              "value": "GF_Kitchen_RefrigeratorLarge"
             }
           ]
         }
@@ -1504,13 +1461,145 @@
       "valueName": "total"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 9,
+        "y": 5
+      },
+      "hideTimeOverride": true,
+      "id": 52,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:1446",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:1447",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Koelkast Klein",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_RefrigeratorSmall"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/d",
+      "timeShift": null,
+      "title": "Koelkast klein vandaag",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:1449",
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 7
       },
       "id": 26,
       "panels": [],
@@ -1530,10 +1619,10 @@
       "fontSize": "80%",
       "format": "watt",
       "gridPos": {
-        "h": 7,
+        "h": 6,
         "w": 5,
         "x": 0,
-        "y": 9
+        "y": 8
       },
       "hideTimeOverride": true,
       "id": 15,
@@ -1651,7 +1740,7 @@
           ]
         },
         {
-          "alias": "Vaatwasser",
+          "alias": "Keukenapparatuur",
           "groupBy": [
             {
               "params": [
@@ -1693,9 +1782,15 @@
           ],
           "tags": [
             {
-              "key": "device",
+              "key": "category",
               "operator": "=",
-              "value": "GF_Kitchen_Dishwasher"
+              "value": "Kitchen_appliances"
+            },
+            {
+              "condition": "AND",
+              "key": "location",
+              "operator": "=",
+              "value": "GF_Kitchen"
             }
           ]
         },
@@ -1894,55 +1989,6 @@
               "value": "Lighting"
             }
           ]
-        },
-        {
-          "alias": "Koelkast groot",
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "previous"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "PowerConsumption",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "H",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "watt"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  " / 1000"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "device",
-              "operator": "=",
-              "value": "GF_Kitchen_RefrigeratorLarge"
-            }
-          ]
         }
       ],
       "timeFrom": "now/M",
@@ -1973,7 +2019,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 9
+        "y": 8
       },
       "hideTimeOverride": true,
       "id": 13,
@@ -2104,7 +2150,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 9
+        "y": 8
       },
       "hideTimeOverride": true,
       "id": 20,
@@ -2235,7 +2281,7 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 9
+        "y": 8
       },
       "hideTimeOverride": true,
       "id": 30,
@@ -2366,7 +2412,7 @@
         "h": 2,
         "w": 4,
         "x": 17,
-        "y": 9
+        "y": 8
       },
       "hideTimeOverride": true,
       "id": 42,
@@ -2495,7 +2541,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 11
+        "y": 10
       },
       "hideTimeOverride": true,
       "id": 14,
@@ -2626,7 +2672,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 11
+        "y": 10
       },
       "hideTimeOverride": true,
       "id": 49,
@@ -2760,7 +2806,7 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 11
+        "y": 10
       },
       "hideTimeOverride": true,
       "id": 35,
@@ -2890,7 +2936,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 13
+        "y": 12
       },
       "hideTimeOverride": true,
       "id": 45,
@@ -2998,13 +3044,147 @@
       "valueName": "total"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 3.5,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 9,
+        "y": 12
+      },
+      "hideTimeOverride": true,
+      "id": 53,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:1861",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:1862",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Koelkast klein",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_RefrigeratorSmall"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/M",
+      "timeShift": null,
+      "title": "Koelkast klein deze maand",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:1864",
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 14
       },
       "id": 24,
       "panels": [],
@@ -3024,10 +3204,10 @@
       "fontSize": "80%",
       "format": "watt",
       "gridPos": {
-        "h": 7,
+        "h": 6,
         "w": 5,
         "x": 0,
-        "y": 17
+        "y": 15
       },
       "hideTimeOverride": true,
       "id": 18,
@@ -3194,7 +3374,7 @@
           ]
         },
         {
-          "alias": "Vaatwasser",
+          "alias": "Keukenapparatuur",
           "groupBy": [
             {
               "params": [
@@ -3236,9 +3416,15 @@
           ],
           "tags": [
             {
-              "key": "device",
+              "key": "category",
               "operator": "=",
-              "value": "GF_Kitchen_Dishwasher"
+              "value": "Kitchen_appliances"
+            },
+            {
+              "condition": "AND",
+              "key": "location",
+              "operator": "=",
+              "value": "GF_Kitchen"
             }
           ]
         },
@@ -3388,55 +3574,6 @@
               "value": "FF_MasterBedroom_TV"
             }
           ]
-        },
-        {
-          "alias": "Koelkast groot",
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "previous"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "PowerConsumption",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "H",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "watt"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  " / 1000"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "device",
-              "operator": "=",
-              "value": "GF_Kitchen_RefrigeratorLarge"
-            }
-          ]
         }
       ],
       "timeFrom": "now/y",
@@ -3467,7 +3604,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 17
+        "y": 15
       },
       "hideTimeOverride": true,
       "id": 16,
@@ -3596,7 +3733,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 17
+        "y": 15
       },
       "hideTimeOverride": true,
       "id": 21,
@@ -3725,7 +3862,7 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 17
+        "y": 15
       },
       "hideTimeOverride": true,
       "id": 31,
@@ -3854,7 +3991,7 @@
         "h": 2,
         "w": 4,
         "x": 17,
-        "y": 17
+        "y": 15
       },
       "hideTimeOverride": true,
       "id": 43,
@@ -3983,7 +4120,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 19
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 17,
@@ -4112,7 +4249,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 19
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 50,
@@ -4241,7 +4378,7 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 19
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 36,
@@ -4371,7 +4508,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 21
+        "y": 19
       },
       "hideTimeOverride": true,
       "id": 46,
@@ -4479,13 +4616,142 @@
       "valueName": "total"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 9,
+        "y": 19
+      },
+      "hideTimeOverride": true,
+      "id": 54,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Koelkast klein",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_RefrigeratorSmall"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/y",
+      "timeShift": null,
+      "title": "Koelkast klein dit jaar",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 21
       },
       "id": 9,
       "panels": [],
@@ -4504,7 +4770,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 25
+        "y": 22
       },
       "hiddenSeries": false,
       "id": 2,
@@ -4633,7 +4899,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 25
+        "y": 22
       },
       "hiddenSeries": false,
       "id": 3,
@@ -4762,7 +5028,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 31
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 47,
@@ -4892,7 +5158,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 37
+        "y": 34
       },
       "id": 7,
       "panels": [],
@@ -4911,7 +5177,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 38
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 22,
@@ -5040,7 +5306,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 38
+        "y": 35
       },
       "hiddenSeries": false,
       "id": 51,
@@ -5113,6 +5379,49 @@
               "value": "GF_Kitchen_RefrigeratorLarge"
             }
           ]
+        },
+        {
+          "alias": "Koelkast klein",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Kitchen_RefrigeratorSmall"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -5171,7 +5480,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 44
+        "y": 41
       },
       "hiddenSeries": false,
       "id": 32,
@@ -5300,7 +5609,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 44
+        "y": 41
       },
       "hiddenSeries": false,
       "id": 33,
@@ -5424,7 +5733,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 50
+        "y": 47
       },
       "id": 38,
       "panels": [],
@@ -5443,7 +5752,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 51
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 40,
@@ -5592,5 +5901,5 @@
   "variables": {
     "list": []
   },
-  "version": 2
+  "version": 3
 }
