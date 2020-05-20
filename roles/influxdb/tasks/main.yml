@@ -19,7 +19,7 @@
 
 - include_role:
     name: dockercontainer
-    tasks_from: main
+    tasks_from: default
   vars:
     container_basename: "influxdb_temp"
     container_image: "influxdb"
@@ -53,7 +53,7 @@
 
 - include_role:
     name: dockercontainer
-    tasks_from: main
+    tasks_from: default
   vars:
     container_basename: "influxdb"
     container_image: "influxdb"

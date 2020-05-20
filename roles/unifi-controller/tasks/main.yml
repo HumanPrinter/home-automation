@@ -10,7 +10,7 @@
 - name: Deploy Docker container
   include_role:
     name: dockercontainer
-    tasks_from: main
+    tasks_from: default
   vars:
     container_basename: "unifi_controller"
     container_image: "linuxserver/unifi-controller"

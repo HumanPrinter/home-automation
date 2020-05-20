@@ -18,7 +18,7 @@
 
 - include_role:
     name: dockercontainer
-    tasks_from: main
+    tasks_from: default
   vars:
     container_basename: "nodered"
     container_image: "nodered/node-red"

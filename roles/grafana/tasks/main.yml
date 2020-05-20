@@ -19,7 +19,7 @@
 
 - include_role:
     name: dockercontainer
-    tasks_from: main
+    tasks_from: default
   vars:
     container_basename: "grafana"
     container_image: "grafana/grafana"

@@ -1,7 +1,7 @@
 - name: Deploy Docker container
   include_role:
     name: dockercontainer
-    tasks_from: main
+    tasks_from: default
   vars:
     container_basename: "portainer-agent"
     container_image: "portainer/agent"

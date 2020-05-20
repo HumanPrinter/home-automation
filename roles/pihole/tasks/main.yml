@@ -30,7 +30,7 @@
 - name: Deploy Docker container
   include_role:
     name: dockercontainer
-    tasks_from: main
+    tasks_from: default
   vars:
     container_basename: "pihole"
     container_image: "pihole/pihole"
