@@ -118,7 +118,27 @@
 
 - include_role:
     name: dockercontainer
-    tasks_from: main
+    tasks_from: prepare
+  vars:
+    container_basename: "openhab"
+    container_image: "openhab/openhab"
+    container_tag: "{{ openhab.version }}"
+  tags: [docker-container]
+
+- name: Clear the OpenHAB cache
+  shell: "/bin/rm -rf /dockermnt/openhab/userdata/{{ item }}/*"
+  args:
+    warn: false
+  become: yes
+  loop:
+  - cache
+  - tmp
+  when: existing_container_is_stopped
+  tags: [cache]
+
+- include_role:
+    name: dockercontainer
+    tasks_from: deploy
   vars:
     container_basename: "openhab"
     container_image: "openhab/openhab"
@@ -149,7 +169,7 @@
     port: 8080
   tags: [docker-container]
 
-- name: Move the git repository over the files created by OpenHAB
+- name: Move the git repository over the files created by OpenHAB # noqa 303 The synchronize module does not support rsync within the same host
   command:
     cmd: 'rsync -qrpEogtW /tmp/openhab/ /dockermnt/openhab/'
   become: yes
