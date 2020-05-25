@@ -1,0 +1,118 @@
+################################### CalDAV IO Binding ###################################
+#
+#######################
+# GFT-AFVAL           #
+#######################
+# Used to connect to Cal DAV.
+# Path to the calendar
+caldavio:GFTafval:url=https://caldav.one.com/calendars/users/oscar@oscarbrouwer.nl/0D50B8D1-C0A4-4E5B-909A-3DAF1115D5A1/
+
+# Username for the calendar
+caldavio:GFTafval:username={{ openhab.caldav_user }}
+
+# Password for the calendar
+caldavio:GFTafval:password={{ openhab.caldav_password }}
+
+# Reload interval unit is minutes.
+# Defines how often the calendar should be reloaded from server.
+# Default is 60 minutes
+caldavio:GFTafval:reloadInterval=60
+
+# This defines which events are relevant for execution. Unit is in minutes.
+# Default is 1 Day (1440 minutes)
+caldavio:GFTafval:preloadTime=30240
+
+# A caldav Server is just a webdav Server which list files. Some servers does not use the valid timestamp for modifications.
+# If your calendar does not provide correct timestamps you have to set this false.
+# Default is true
+caldavio:GFTafval:lastModifiedFileTimeStampValid=true
+
+# SSL verification can be disabled, if you don't want to import the server certificate
+# into the java keystore. This is just needed for self-signed certificates, where the
+# certificate path cannot be verified. Default is false. Do not set to true if no SSL is used.
+caldavio:GFTafval:disableCertificateVerification=true
+
+# Timezone for events which does not have a timeZone information.
+# Normally this is not required
+#timeZone=
+
+# Charset which should be used for reading an event.
+caldavio:GFTafval:charset=UTF-8
+
+#######################
+# RESTAFVAL           #
+#######################
+# Used to connect to Cal DAV.
+# Path to the calendar
+caldavio:Restafval:url=https://caldav.one.com/calendars/users/oscar@oscarbrouwer.nl/7445C71E-C318-4AC2-B673-504FC20BFC92/
+
+# Username for the calendar
+caldavio:Restafval:username={{ openhab.caldav_user }}
+
+# Password for the calendar
+caldavio:Restafval:password={{ openhab.caldav_password }}
+
+# Reload interval unit is minutes.
+# Defines how often the calendar should be reloaded from server.
+# Default is 60 minutes
+caldavio:Restafval:reloadInterval=60
+
+# This defines which events are relevant for execution. Unit is in minutes.
+# Default is 1 Day (1440 minutes)
+caldavio:Restafval:preloadTime=30240
+
+# A caldav Server is just a webdav Server which list files. Some servers does not use the valid timestamp for modifications.
+# If your calendar does not provide correct timestamps you have to set this false.
+# Default is true
+caldavio:Restafval:lastModifiedFileTimeStampValid=true
+
+# SSL verification can be disabled, if you don't want to import the server certificate
+# into the java keystore. This is just needed for self-signed certificates, where the
+# certificate path cannot be verified. Default is false. Do not set to true if no SSL is used.
+caldavio:Restafval:disableCertificateVerification=true
+
+# Timezone for events which does not have a timeZone information.
+# Normally this is not required
+#timeZone=
+
+# Charset which should be used for reading an event.
+caldavio:Restafval:charset=UTF-8
+
+#######################
+# OUD PAPIER          #
+#######################
+# Used to connect to Cal DAV.
+# Path to the calendar
+caldavio:Oudpapier:url=https://caldav.one.com/calendars/users/oscar@oscarbrouwer.nl/C27BC0F4-26EB-47B3-AF0E-3770553C52C2/
+
+# Username for the calendar
+caldavio:Oudpapier:username={{ openhab.caldav_user }}
+
+# Password for the calendar
+caldavio:Oudpapier:password={{ openhab.caldav_password }}
+
+# Reload interval unit is minutes.
+# Defines how often the calendar should be reloaded from server.
+# Default is 60 minutes
+caldavio:Oudpapier:reloadInterval=60
+
+# This defines which events are relevant for execution. Unit is in minutes.
+# Default is 1 Day (1440 minutes)
+caldavio:Oudpapier:preloadTime=50400
+
+# A caldav Server is just a webdav Server which list files. Some servers does not use the valid timestamp for modifications.
+# If your calendar does not provide correct timestamps you have to set this false.
+# Default is true
+caldavio:Oudpapier:lastModifiedFileTimeStampValid=true
+
+# SSL verification can be disabled, if you don't want to import the server certificate
+# into the java keystore. This is just needed for self-signed certificates, where the
+# certificate path cannot be verified. Default is false. Do not set to true if no SSL is used.
+caldavio:Oudpapier:disableCertificateVerification=true
+
+# Timezone for events which does not have a timeZone information.
+# Normally this is not required
+#timeZone=
+
+# Charset which should be used for reading an event.
+caldavio:Oudpapier:charset=UTF-8

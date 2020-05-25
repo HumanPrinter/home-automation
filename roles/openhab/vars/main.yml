@@ -1,5 +1,7 @@
 openhab:
   version: "2.5.5"
+  caldav_user: oscar@oscarbrouwer.nl
+  caldav_password: "{{ vault_openhab_caldav_password }}"
 
 samba:
   share_username: openhab

@@ -176,6 +176,14 @@
   when: not git_repo.stat.exists
   tags: [git-repo]
 
+- name: Copy templated files to OpenHAB
+  template:
+    src: caldavio.cfg.j2
+    dest: /dockermnt/openhab/conf/services/caldavio.cfg
+    owner: openhab
+    group: openhab
+  tags: [git-repo]
+
 - name: Remove temporary git repository
   file:
     path: /tmp/openhab/
