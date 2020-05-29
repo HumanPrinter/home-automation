@@ -1,5 +1,5 @@
 grafana:
-  version: 6.7.3
+  version: 7.0.1
   smtp:
     host: send.one.com
     port: 25
