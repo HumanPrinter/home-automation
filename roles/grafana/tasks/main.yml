@@ -15,6 +15,7 @@
     - { src: dashboard_shellymonitoring.j2,         dest: grafana/config/provisioning/dashboards/shellymonitoring.json }
     - { src: dashboard_slimmemeter.j2,              dest: grafana/config/provisioning/dashboards/slimmemeter.json }
     - { src: dashboard_stroomverbruikhuishouden.j2, dest: grafana/config/provisioning/dashboards/stroomverbruikhuishouden.json }
+    - { src: dashboard_energiekosten.j2,            dest: grafana/config/provisioning/dashboards/energiekosten.json }
   tags: [docker-mounts]
 
 - include_role:
