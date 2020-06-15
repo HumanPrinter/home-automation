@@ -712,49 +712,6 @@
               "value": "GF_Kitchen_RefrigeratorSmall"
             }
           ]
-        },
-        {
-          "alias": "Temperatuur ShellyPlug Zwembad",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "previous"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "Device_Information",
-          "orderByTime": "ASC",
-          "policy": "one_day",
-          "refId": "P",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "temperature"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "device",
-              "operator": "=",
-              "value": "GF_LaundryRoom_Swimmingpool"
-            }
-          ]
         }
       ],
       "thresholds": [],
@@ -1638,5 +1595,5 @@
   "timezone": "",
   "title": "Shelly Monitoring",
   "uid": "ktZuYeEWk",
-  "version": 1
+  "version": 2
 }
