@@ -182,6 +182,7 @@
     dest: /dockermnt/openhab/conf/services/caldavio.cfg
     owner: openhab
     group: openhab
+  become: yes
   tags: [git-repo]
 
 - name: Remove temporary git repository

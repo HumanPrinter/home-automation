@@ -1,5 +1,5 @@
 openhab:
-  version: "2.5.5"
+  version: "2.5.6"
   caldav_user: oscar@oscarbrouwer.nl
   caldav_password: "{{ vault_openhab_caldav_password }}"
 
