@@ -1,3 +1,4 @@
 mosquitto:
+  version: "1.6.10"
   username: openhab
   password: "{{ vault_mosquitto_password }}"

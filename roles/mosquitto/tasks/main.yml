@@ -25,7 +25,7 @@
   vars:
     container_basename: "mosquitto_temp"
     container_image: "eclipse-mosquitto"
-    container_tag: "1.6.9"
+    container_tag: "{{ mosquitto.version }}"
     exposed_ports: "1883:1883"
     command: mosquitto_passwd -U /mosquitto_temp/passwd
     cleanup: "yes"
@@ -55,7 +55,7 @@
   vars:
     container_basename: "mosquitto"
     container_image: "eclipse-mosquitto"
-    container_tag: "1.6.9"
+    container_tag: "{{ mosquitto.version }}"
     exposed_ports: "1883:1883"
     mounts:
     - { source: /dockermnt/mosquitto/config/, target: /mosquitto/config/, read_only: "no",  type: bind }
