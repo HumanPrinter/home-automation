@@ -7,8 +7,18 @@
     append: yes
     groups: docker
   become: yes
+  register: config_result
   tags: [docker, docker-config]
 
+- name: reboot machine
+  reboot:
+    test_command: whoami
+    reboot_timeout: 300
+    msg: Reboot initiated by Ansible
+  become: yes
+  when: config_result.changed
+  tags: [docker, docker-config, reboot]
+  
 - name: Install pip3
   apt:
     update_cache: yes

@@ -1,0 +1,6 @@
+- hosts: domotica
+  roles:
+  - role: ssh
+  - role: common-tasks
+  - role: common-tools
+  - role: dockerhost

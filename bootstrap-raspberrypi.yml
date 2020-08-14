@@ -123,3 +123,20 @@
     when: host_name.changed or memory_split.changed
     tags: [reboot]
   
+  - name: Run apt-get update # noqa 403 - This task is specifically created to perform an apt full-upgrade
+    apt:
+      autoremove: yes
+      state: latest
+      update_cache: yes
+      upgrade: full
+    become: yes
+    tags: [apt]
+  
+  - name: reboot machine
+    reboot:
+      test_command: whoami
+      reboot_timeout: 300
+      msg: Reboot initiated by Ansible
+    become: yes
+    tags: [apt, reboot]
+  
