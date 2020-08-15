@@ -64,7 +64,7 @@
     mounts:
     - { source: /dockermnt/influxdb/config/influxdb.conf, target: /etc/influxdb/influxdb.conf, read_only: "yes", type: bind }
     - { source: /dockermnt/influxdb/data/,                target: /var/lib/influxdb/,          read_only: "no",  type: bind }
-    - { source: /mnt/usbdrive/influxdb_backup/,           target: /backup/,                    read_only: "no",  type: bind }
+    - { source: /tmp/influxdb_backup/,           target: /backup/,                    read_only: "no",  type: bind }
   tags: [deploy, docker-container]
 
 - name: Deploy the backup script for Influxdb
