@@ -74,3 +74,14 @@
 
 - include: install.yml
   tags: [home-assistant, home-assistant-install]
+
+- name: Create a cron job to copy all available snapshots to the USB-drive
+  cron:
+    name: "Backup and manage Hass.io snapshots"
+    job: "cp -u --preserve=timestamps /dockermnt/hassio/backup/*.tar /mnt/usbdrive/hassio_snapshots/; ls -t /dockermnt/hassio/backup/*.tar | tail -n +2 | xargs rm --;find /mnt/usbdrive/hassio_snapshots -name '*.tar' -type f -mtime +14 -exec rm -rf {} /;"
+    state: present
+    user: "root"
+    hour: "2"
+    minute: "00"
+  become: yes
+  tags: [home-assistant, cron]
