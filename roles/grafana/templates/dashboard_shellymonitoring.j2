@@ -27,7 +27,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -56,10 +57,8 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "percentage": false,
+      "pluginVersion": "7.1.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -712,6 +711,49 @@
               "value": "GF_Kitchen_RefrigeratorSmall"
             }
           ]
+        },
+        {
+          "alias": "Temperatuur ShellyDimmer Slaapkamerverlichting",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "P",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "FF_MasterBedroom_Light"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -764,7 +806,8 @@
       "decimals": 1,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -794,10 +837,8 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "percentage": false,
+      "pluginVersion": "7.1.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1536,6 +1577,49 @@
               "value": "GF_LaundryRoom_Swimmingpool"
             }
           ]
+        },
+        {
+          "alias": "Signaalsterkte ShellyDimmer Slaapkamerverlichting",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "R",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "signalstrength"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "FF_MasterBedroom_Light"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -1581,7 +1665,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 25,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1595,5 +1679,5 @@
   "timezone": "",
   "title": "Shelly Monitoring",
   "uid": "ktZuYeEWk",
-  "version": 2
+  "version": 1
 }

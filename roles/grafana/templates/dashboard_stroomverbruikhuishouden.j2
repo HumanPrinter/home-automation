@@ -51,7 +51,7 @@
       "fontSize": "80%",
       "format": "watt",
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 5,
         "x": 0,
         "y": 1
@@ -419,6 +419,55 @@
               "key": "device",
               "operator": "=",
               "value": "FF_MasterBedroom_TV"
+            }
+          ]
+        },
+        {
+          "alias": "Computer",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "FF_Workroom_Computer"
             }
           ]
         }
@@ -1403,6 +1452,145 @@
         "#d44a3a"
       ],
       "datasource": null,
+      "decimals": 3,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 17,
+        "y": 3
+      },
+      "hideTimeOverride": true,
+      "id": 58,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:482",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:483",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Computer",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "FF_Workroom_Computer"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/d",
+      "timeShift": null,
+      "title": "Computer vandaag",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:485",
+          "op": "=",
+          "text": "0 kWh",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
       "decimals": 2,
       "fieldConfig": {
         "defaults": {
@@ -1431,10 +1619,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
+          "$$hashKey": "object:1723",
           "name": "value to text",
           "value": 1
         },
         {
+          "$$hashKey": "object:1724",
           "name": "range to text",
           "value": 2
         }
@@ -1522,6 +1712,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
+          "$$hashKey": "object:1726",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -1813,7 +2004,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 26,
       "panels": [],
@@ -1839,10 +2030,10 @@
       "fontSize": "80%",
       "format": "watt",
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 5,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "hideTimeOverride": true,
       "id": 15,
@@ -2209,6 +2400,55 @@
               "value": "Lighting"
             }
           ]
+        },
+        {
+          "alias": "Computer",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "FF_Workroom_Computer"
+            }
+          ]
         }
       ],
       "timeFrom": "now/M",
@@ -2245,7 +2485,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 8
+        "y": 9
       },
       "hideTimeOverride": true,
       "id": 13,
@@ -2264,6 +2504,7 @@
           "value": 2
         }
       ],
+      "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
       "pluginVersion": "6.3.5",
@@ -2384,7 +2625,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 8
+        "y": 9
       },
       "hideTimeOverride": true,
       "id": 20,
@@ -2521,7 +2762,7 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 8
+        "y": 9
       },
       "hideTimeOverride": true,
       "id": 30,
@@ -2658,7 +2899,7 @@
         "h": 2,
         "w": 4,
         "x": 17,
-        "y": 8
+        "y": 9
       },
       "hideTimeOverride": true,
       "id": 42,
@@ -2793,7 +3034,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 10
+        "y": 11
       },
       "hideTimeOverride": true,
       "id": 14,
@@ -2930,7 +3171,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 10
+        "y": 11
       },
       "hideTimeOverride": true,
       "id": 49,
@@ -3070,7 +3311,7 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 10
+        "y": 11
       },
       "hideTimeOverride": true,
       "id": 35,
@@ -3180,6 +3421,147 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 2,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 3.5,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 17,
+        "y": 11
+      },
+      "hideTimeOverride": true,
+      "id": 59,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:2310",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:2311",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Computer",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "FF_Workroom_Computer"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/M",
+      "timeShift": null,
+      "title": "Computer deze maand",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:2313",
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
       "colorValue": false,
       "colors": [
         "#299c46",
@@ -3206,7 +3588,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 12
+        "y": 13
       },
       "hideTimeOverride": true,
       "id": 45,
@@ -3343,7 +3725,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 12
+        "y": 13
       },
       "hideTimeOverride": true,
       "id": 53,
@@ -3483,7 +3865,7 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 12
+        "y": 13
       },
       "hideTimeOverride": true,
       "id": 56,
@@ -3600,7 +3982,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 16
       },
       "id": 24,
       "panels": [],
@@ -3626,10 +4008,10 @@
       "fontSize": "80%",
       "format": "watt",
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 5,
         "x": 0,
-        "y": 15
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 18,
@@ -3996,6 +4378,55 @@
               "value": "FF_MasterBedroom_TV"
             }
           ]
+        },
+        {
+          "alias": "Computer",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "H",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "FF_Workroom_Computer"
+            }
+          ]
         }
       ],
       "timeFrom": "now/y",
@@ -4032,7 +4463,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 15
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 16,
@@ -4167,7 +4598,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 15
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 21,
@@ -4302,7 +4733,7 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 15
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 31,
@@ -4437,7 +4868,7 @@
         "h": 2,
         "w": 4,
         "x": 17,
-        "y": 15
+        "y": 17
       },
       "hideTimeOverride": true,
       "id": 43,
@@ -4572,7 +5003,7 @@
         "h": 2,
         "w": 4,
         "x": 5,
-        "y": 17
+        "y": 19
       },
       "hideTimeOverride": true,
       "id": 17,
@@ -4707,7 +5138,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 17
+        "y": 19
       },
       "hideTimeOverride": true,
       "id": 50,
@@ -4842,7 +5273,7 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 17
+        "y": 19
       },
       "hideTimeOverride": true,
       "id": 36,
@@ -4977,8 +5408,147 @@
       "gridPos": {
         "h": 2,
         "w": 4,
-        "x": 5,
+        "x": 17,
         "y": 19
+      },
+      "hideTimeOverride": true,
+      "id": 60,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:2398",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:2399",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "pluginVersion": "6.3.5",
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "Computer",
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  " / 1000"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "FF_Workroom_Computer"
+            }
+          ]
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": "now/y",
+      "timeShift": null,
+      "title": "Computer dit jaar",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:2401",
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 2,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "kwatth",
+      "gauge": {
+        "maxValue": 1,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": false
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 5,
+        "y": 21
       },
       "hideTimeOverride": true,
       "id": 46,
@@ -5113,7 +5683,7 @@
         "h": 2,
         "w": 4,
         "x": 9,
-        "y": 19
+        "y": 21
       },
       "hideTimeOverride": true,
       "id": 54,
@@ -5248,7 +5818,7 @@
         "h": 2,
         "w": 4,
         "x": 13,
-        "y": 19
+        "y": 21
       },
       "hideTimeOverride": true,
       "id": 57,
@@ -5365,7 +5935,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 24
       },
       "id": 9,
       "panels": [],
@@ -5380,7 +5950,8 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -5390,7 +5961,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 22
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 2,
@@ -5409,10 +5980,8 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "percentage": false,
+      "pluginVersion": "7.1.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -5515,7 +6084,8 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -5525,7 +6095,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 22
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 3,
@@ -5544,10 +6114,8 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "percentage": false,
+      "pluginVersion": "7.1.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -5650,7 +6218,8 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -5660,7 +6229,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 28
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 47,
@@ -5679,10 +6248,8 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "percentage": false,
+      "pluginVersion": "7.1.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -5790,7 +6357,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 37
       },
       "id": 7,
       "panels": [],
@@ -5805,7 +6372,8 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -5815,7 +6383,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 22,
@@ -5834,10 +6402,8 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "percentage": false,
+      "pluginVersion": "7.1.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -5940,7 +6506,8 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -5950,7 +6517,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 51,
@@ -5969,10 +6536,8 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "percentage": false,
+      "pluginVersion": "7.1.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -6120,7 +6685,8 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -6130,7 +6696,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 41
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 32,
@@ -6149,10 +6715,8 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "percentage": false,
+      "pluginVersion": "7.1.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -6255,7 +6819,8 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -6265,7 +6830,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 41
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 33,
@@ -6284,10 +6849,8 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "percentage": false,
+      "pluginVersion": "7.1.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -6389,7 +6952,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 47
+        "y": 50
       },
       "id": 38,
       "panels": [],
@@ -6404,7 +6967,8 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "links": []
         },
         "overrides": []
       },
@@ -6414,7 +6978,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 48
+        "y": 51
       },
       "hiddenSeries": false,
       "id": 40,
@@ -6433,10 +6997,8 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
       "percentage": false,
+      "pluginVersion": "7.1.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -6530,10 +7092,145 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 51
+      },
+      "hiddenSeries": false,
+      "id": 61,
+      "interval": "",
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.4",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Computer",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "PowerConsumption",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "watt"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "FF_Workroom_Computer"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Stroomverbruik Computer",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "watt",
+          "label": "Stroomverbruik",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 25,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -6560,5 +7257,5 @@
   "timezone": "",
   "title": "Stroomverbruik huishouden",
   "uid": "8efIPotZz",
-  "version": 2
+  "version": 1
 }
