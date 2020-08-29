@@ -55,10 +55,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
+          "$$hashKey": "object:101",
           "name": "value to text",
           "value": 1
         },
         {
+          "$$hashKey": "object:102",
           "name": "range to text",
           "value": 2
         }
@@ -103,7 +105,7 @@
           ],
           "measurement": "SmartMeter_Electricity_ConsumptionHigh",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
@@ -129,6 +131,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
+          "$$hashKey": "object:104",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -173,10 +176,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
+          "$$hashKey": "object:176",
           "name": "value to text",
           "value": 1
         },
         {
+          "$$hashKey": "object:177",
           "name": "range to text",
           "value": 2
         }
@@ -221,7 +226,7 @@
           ],
           "measurement": "SmartMeter_Electricity_ConsumptionLow",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -247,6 +252,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
+          "$$hashKey": "object:179",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -291,10 +297,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
+          "$$hashKey": "object:326",
           "name": "value to text",
           "value": 1
         },
         {
+          "$$hashKey": "object:327",
           "name": "range to text",
           "value": 2
         }
@@ -339,7 +347,7 @@
           ],
           "measurement": "SmartMeter_Electricity_ProductionLow",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -365,6 +373,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
+          "$$hashKey": "object:329",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -409,10 +418,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
+          "$$hashKey": "object:473",
           "name": "value to text",
           "value": 1
         },
         {
+          "$$hashKey": "object:474",
           "name": "range to text",
           "value": 2
         }
@@ -457,7 +468,7 @@
           ],
           "measurement": "SmartMeter_Electricity_ProductionHigh",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -483,6 +494,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
+          "$$hashKey": "object:476",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -527,10 +539,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
+          "$$hashKey": "object:251",
           "name": "value to text",
           "value": 1
         },
         {
+          "$$hashKey": "object:252",
           "name": "range to text",
           "value": 2
         }
@@ -575,7 +589,7 @@
           ],
           "measurement": "SmartMeter_Gas_CurrentConsumption",
           "orderByTime": "ASC",
-          "policy": "default",
+          "policy": "one_day",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -601,6 +615,7 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
+          "$$hashKey": "object:254",
           "op": "=",
           "text": "N/A",
           "value": "null"
@@ -616,8 +631,7 @@
       "datasource": "homeautomation",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
-          "links": []
+          "custom": {}
         },
         "overrides": []
       },
@@ -646,7 +660,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pluginVersion": "7.1.3",
+      "pluginVersion": "7.1.4",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -780,8 +794,7 @@
       "datasource": "homeautomation",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
-          "links": []
+          "custom": {}
         },
         "overrides": []
       },
@@ -809,7 +822,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pluginVersion": "7.1.3",
+      "pluginVersion": "7.1.4",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -943,5 +956,5 @@
   "timezone": "",
   "title": "Slimme meter",
   "uid": "OxVYrXuiz",
-  "version": 3
+  "version": 1
 }
