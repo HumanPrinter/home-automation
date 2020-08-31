@@ -39,6 +39,7 @@
 
 # The public facing domain name used to access grafana from a browser
 ;domain = localhost
+domain = home.oscarbrouwer.nl
 
 # Redirect to correct domain if host header does not match domain
 # Prevents DNS rebinding attacks
@@ -47,6 +48,9 @@
 # The full public facing url you use in browser, used for redirects and emails
 # If you use reverse proxy and sub path specify full url (with sub path)
 ;root_url = http://localhost:3000
+root_url = https://home.oscarbrouwer.nl:443/grafana
+
+serve_from_sub_path = true
 
 # Log web requests
 ;router_logging = false
@@ -230,7 +234,7 @@ allow_sign_up = false
 #################################### Anonymous Auth ##########################
 [auth.anonymous]
 # enable anonymous access
-enabled = true
+enabled = false
 
 # specify organization name that should be used for unauthenticated users
 ;org_name = Main Org.
