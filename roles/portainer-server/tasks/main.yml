@@ -12,7 +12,7 @@
     tasks_from: default
   vars:
     container_basename: "portainer"
-    container_image: "portainer/portainer"
+    container_image: "portainer/portainer-ce"
     container_tag: "{{ portainer.version }}"
     exposed_ports: "9000:9000"
     mounts:

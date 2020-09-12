@@ -1,2 +1,2 @@
 portainer:
-  version: "1.24.1-alpine"
+  version: "2.0.0-alpine"
