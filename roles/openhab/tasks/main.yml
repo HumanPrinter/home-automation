@@ -143,7 +143,7 @@
     container_basename: "openhab"
     container_image: "openhab/openhab"
     container_tag: "{{ openhab.version }}"
-    devices: "/dev/ttyUSB0"
+    devices: "/dev/ttyUSB1"
     network_mode: host
     environment_variables:
       OPENHAB_BACKUPS: "/backup"
