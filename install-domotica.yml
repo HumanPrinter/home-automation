@@ -1,6 +1,16 @@
 - hosts: domotica
   roles:
   - role: ssh
-  - role: common-tasks
-  - role: common-tools
+  - role: common_tasks
+  - role: common_tools
+  - role: custom_tools
+    install_tools:
+    - libffi-dev
+    - libssl-dev
+    - python3
+    - python3-pip
+    remove_tools:
+    - python-configparser
+    pip_tools:
+    - docker-compose
   - role: dockerhost

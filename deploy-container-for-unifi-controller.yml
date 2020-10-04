@@ -1,4 +1,4 @@
 - hosts: pihole
   gather_facts: no
   roles:
-  - role: unifi-controller
+  - role: unifi_controller

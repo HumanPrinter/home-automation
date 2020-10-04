@@ -29,7 +29,7 @@
     register: timezone_result
     become: yes
     tags: [timezone]
-  
+
   - name: Change the timezone (step 2 of 2) - Run dpkg-reconfigure
     shell: dpkg-reconfigure -f noninteractive tzdata
     become: yes
@@ -45,9 +45,9 @@
   - name: Change the WiFi country (step 2 of 2) - Change WiFi country
     shell: "{{ item }}"
     loop:
-      - 'wpa_cli -i wlan0 set country "NL"'
-      - 'wpa_cli -i wlan0 save_config'
-      - 'rfkill unblock wifi'
+    - 'wpa_cli -i wlan0 set country "NL"'
+    - 'wpa_cli -i wlan0 save_config'
+    - 'rfkill unblock wifi'
     become: yes
     when: wifi_country.stdout != 'NL'
     tags: [wifi]
@@ -82,7 +82,7 @@
     register: default_locale
     become: yes
     tags: [locale]
-    
+
   - name: Set the locale (step 3 of 3)
     shell: dpkg-reconfigure -f noninteractive locales
     become: yes
@@ -106,10 +106,10 @@
   - name: Configure keyboard (step 2 of 2)
     shell: "{{ item }}"
     loop:
-      - 'dpkg-reconfigure -f noninteractive keyboard-configuration'
-      - 'invoke-rc.d keyboard-setup start'
-      - "setsid sh -c 'exec setupcon -k --force <> /dev/tty1 >&0 2>&1'"
-      - 'udevadm trigger --subsystem-match=input --action=change'
+    - 'dpkg-reconfigure -f noninteractive keyboard-configuration'
+    - 'invoke-rc.d keyboard-setup start'
+    - "setsid sh -c 'exec setupcon -k --force <> /dev/tty1 >&0 2>&1'"
+    - 'udevadm trigger --subsystem-match=input --action=change'
     become: yes
     when: keyboard_settings.changed
     tags: [keyboard]
@@ -122,7 +122,7 @@
     become: yes
     when: host_name.changed or memory_split.changed
     tags: [reboot]
-  
+
   - name: Run apt-get update # noqa 403 - This task is specifically created to perform an apt full-upgrade
     apt:
       autoremove: yes
@@ -131,7 +131,7 @@
       upgrade: full
     become: yes
     tags: [apt]
-  
+
   - name: reboot machine
     reboot:
       test_command: whoami
@@ -139,4 +139,3 @@
       msg: Reboot initiated by Ansible
     become: yes
     tags: [apt, reboot]
-  
