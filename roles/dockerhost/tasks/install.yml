@@ -36,6 +36,7 @@
   file:
     path: /root/.docker_installed
     state: touch
+    mode: 0444
   become: yes
   when: "not docker_installed.stat.exists"
   tags: [docker, docker-install]

@@ -56,6 +56,7 @@
   file:
     path: /root/.home_assistant_installed
     state: touch
+    mode: 0444
   become: yes
   when: "not home_assistant_installed.stat.exists"
   tags: [home-assistantX, home-assistant-installX]
