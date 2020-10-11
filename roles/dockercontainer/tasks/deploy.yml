@@ -2,6 +2,7 @@
   docker_container:
     name: "{{ container_basename }}_{{ container_tag }}"
     image: "{{ container_image }}:{{ container_tag }}"
+    container_default_behavior: compatibility
     capabilities: "{{ capabilities | default([]) }}"
     cleanup: "{{ cleanup | default('no') }}"
     detach: "{{ detach | default('yes') }}"
