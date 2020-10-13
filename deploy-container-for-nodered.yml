@@ -1,4 +1,4 @@
-- hosts: openhab
+- hosts: pihole
   gather_facts: no
   roles:
   - role: nodered

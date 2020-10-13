@@ -23,6 +23,7 @@
     container_basename: "nodered"
     container_image: "nodered/node-red"
     container_tag: "{{ nodered.version }}"
+    dns_servers: "192.168.2.250"
     exposed_ports: "1880:1880"
     environment_variables:
       TZ: "Europe/Amsterdam"

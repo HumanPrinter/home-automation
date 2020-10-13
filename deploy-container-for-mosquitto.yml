@@ -1,4 +1,4 @@
-- hosts: domotica
+- hosts: pihole
   gather_facts: no
   roles:
   - role: mosquitto
