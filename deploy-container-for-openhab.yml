@@ -1,4 +1,0 @@
-- hosts: openhab
-  gather_facts: no
-  roles:
-  - role: openhab

@@ -1,6 +1,0 @@
-- name: Restart samba
-  systemd:
-    name: smbd.service
-    state: restarted
-  become: yes
-  tags: [samba-share]
