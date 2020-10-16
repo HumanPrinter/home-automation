@@ -1,4 +1,4 @@
-- hosts: domotica
+- hosts: homeassistant
   gather_facts: no
   roles:
   - role: home_assistant
