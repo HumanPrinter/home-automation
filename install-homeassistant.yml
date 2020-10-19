@@ -14,3 +14,6 @@
     pip_tools:
     - docker-compose
   - role: dockerhost
+  - role: mount_usbdrive
+    mount_device: sda
+    mount_partition: sda1

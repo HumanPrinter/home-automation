@@ -4,3 +4,6 @@
   - role: common_tasks
   - role: common_tools
   - role: dockerhost
+  - role: mount_usbdrive
+    mount_device: sdb
+    mount_partition: sdb1
