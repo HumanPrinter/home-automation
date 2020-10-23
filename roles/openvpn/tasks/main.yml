@@ -15,7 +15,7 @@
 
 - name: Check if there is already a git repository present
   stat:
-    path: /dockermnt/openhab/.git/
+    path: /dockermnt/openvpn/.git/
   register: git_repo
   tags: [git-repo]
 
