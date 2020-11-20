@@ -11,5 +11,7 @@ mosquitto:
     password: "{{ vault_mosquitto_password_nodered }}"
   - username: tasmota
     password: "{{ vault_mosquitto_password_tasmota }}"
+  - username: yicamera
+    password: "{{ vault_mosquitto_password_yicamera }}"
   - username: admin
     password: "{{ vault_mosquitto_password_admin }}"
