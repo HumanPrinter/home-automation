@@ -4,7 +4,7 @@
   tags: [mount-usbdrive]
 
 - meta: end_play
-  when: "mount_path | default('/mnt/usbdrive') in available_mounts"
+  when: "not available_mounts is defined or mount_path | default('/mnt/usbdrive') in available_mounts"
   tags: [mount-usbdrive]
 
 - name: Create a list of mountable partitions
