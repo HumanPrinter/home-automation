@@ -13,5 +13,7 @@ mosquitto:
     password: "{{ vault_mosquitto_password_tasmota }}"
   - username: yicamera
     password: "{{ vault_mosquitto_password_yicamera }}"
+  - username: rpimonitor
+    password: "{{ vault_mosquitto_password_rpimonitor }}"
   - username: admin
     password: "{{ vault_mosquitto_password_admin }}"
