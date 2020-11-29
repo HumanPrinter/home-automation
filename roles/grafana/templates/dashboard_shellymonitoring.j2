@@ -57,8 +57,11 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.4",
+      "pluginVersion": "7.3.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -197,7 +200,7 @@
           ]
         },
         {
-          "alias": "Temperatuur Shelly1PM Lamp 1",
+          "alias": "Temperatuur ShellyDimmer2 Lamp 1",
           "groupBy": [
             {
               "params": [
@@ -240,7 +243,7 @@
           ]
         },
         {
-          "alias": "Temperatuur Shelly1PM Lamp 2",
+          "alias": "Temperatuur ShellyDimmer2 Lamp 2",
           "groupBy": [
             {
               "params": [
@@ -283,7 +286,7 @@
           ]
         },
         {
-          "alias": "Temperatuur Shelly1PM Lamp 3",
+          "alias": "Temperatuur ShellyDimmer2 Lamp 3",
           "groupBy": [
             {
               "params": [
@@ -326,7 +329,7 @@
           ]
         },
         {
-          "alias": "Temperatuur Shelly1PM Schilderijverlichting",
+          "alias": "Temperatuur ShellyDimmer Schilderijverlichting",
           "groupBy": [
             {
               "params": [
@@ -754,6 +757,92 @@
               "value": "FF_MasterBedroom_Light"
             }
           ]
+        },
+        {
+          "alias": "Temperatuur ShellyDimmer2 Vloerlamp",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "Q",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_LivingDining_StandingLight"
+            }
+          ]
+        },
+        {
+          "alias": "Temperatuur ShellyPlugS Kerstverlichting",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "R",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Garage_StringLights"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -837,8 +926,11 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.4",
+      "pluginVersion": "7.3.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1192,7 +1284,7 @@
           ]
         },
         {
-          "alias": "Signaalsterkte Shelly1PM Sfeerlamp 1",
+          "alias": "Signaalsterkte ShellyDimmer2 Sfeerlamp 1",
           "groupBy": [
             {
               "params": [
@@ -1235,7 +1327,7 @@
           ]
         },
         {
-          "alias": "Signaalsterkte Shelly1PM Sfeerlamp 2",
+          "alias": "Signaalsterkte ShellyDimmer2 Sfeerlamp 2",
           "groupBy": [
             {
               "params": [
@@ -1278,7 +1370,7 @@
           ]
         },
         {
-          "alias": "Signaalsterkte Shelly1PM Sfeerlamp 3",
+          "alias": "Signaalsterkte ShellyDimmer2 Sfeerlamp 3",
           "groupBy": [
             {
               "params": [
@@ -1620,6 +1712,92 @@
               "value": "FF_MasterBedroom_Light"
             }
           ]
+        },
+        {
+          "alias": "Signaalsterkte ShellyDimmer2 Vloerlamp",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "S",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "signalstrength"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_LivingDining_StandingLight"
+            }
+          ]
+        },
+        {
+          "alias": "Signaalsterkte ShellyPlugS Kerstverlichting",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "Device_Information",
+          "orderByTime": "ASC",
+          "policy": "one_day",
+          "refId": "T",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "signalstrength"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "device",
+              "operator": "=",
+              "value": "GF_Garage_StringLights"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -1679,5 +1857,5 @@
   "timezone": "",
   "title": "Shelly Monitoring",
   "uid": "ktZuYeEWk",
-  "version": 1
+  "version": 4
 }
