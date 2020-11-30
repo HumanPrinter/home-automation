@@ -26,6 +26,11 @@
     exposed_ports: "1880:1880"
     environment_variables:
       TZ: "Europe/Amsterdam"
+    labels:
+      diun.enable: "true"
+      diun.watch_repo: "true"
+      diun.include_tags: "^\\d+(\\.\\d+)+\\-12$"
+      diun.max_tags: "10"
     mounts:
     - { source: /dockermnt/node-red/data/, target: /data/,                       read_only: "no", type: bind }
     - { source: /dockermnt/node-red/home/.ssh/, target: /usr/src/node-red/.ssh/, read_only: "no", type: bind }

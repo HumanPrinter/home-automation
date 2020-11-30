@@ -61,6 +61,11 @@
     exposed_ports: "8086:8086"
     environment_variables:
       TZ: "Europe/Amsterdam"
+    labels:
+      diun.enable: "true"
+      diun.watch_repo: "true"
+      diun.include_tags: "^\\d+(\\.\\d+)+$"
+      diun.max_tags: "10"
     mounts:
     - { source: /dockermnt/influxdb/config/influxdb.conf, target: /etc/influxdb/influxdb.conf, read_only: "yes", type: bind }
     - { source: /dockermnt/influxdb/data/,                target: /var/lib/influxdb/,          read_only: "no",  type: bind }

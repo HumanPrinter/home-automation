@@ -29,6 +29,11 @@
     environment_variables:
       GF_INSTALL_PLUGINS: grafana-piechart-panel
       TZ: "Europe/Amsterdam"
+    labels:
+      diun.enable: "true"
+      diun.watch_repo: "true"
+      diun.include_tags: "^\\d+(\\.\\d+)+$"
+      diun.max_tags: "10"
     mounts:
     - { source: /dockermnt/grafana/config/, target: /etc/grafana/, read_only: "yes", type: bind }
   tags: [docker-container]
