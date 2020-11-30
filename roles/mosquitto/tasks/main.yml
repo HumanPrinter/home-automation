@@ -26,7 +26,6 @@
     container_basename: "mosquitto_temp"
     container_image: "eclipse-mosquitto"
     container_tag: "{{ mosquitto.version }}"
-    exposed_ports: "1883:1883"
     command: mosquitto_passwd -U /mosquitto_temp/passwd
     cleanup: "yes"
     detach: "no"
@@ -57,6 +56,11 @@
     container_image: "eclipse-mosquitto"
     container_tag: "{{ mosquitto.version }}"
     exposed_ports: "1883:1883"
+    labels:
+      diun.enable: "true"
+      diun.watch_repo: "true"
+      diun.exclude_tags: "openssl;latest;.*-openssl"
+      diun.max_tags: "10"
     mounts:
     - { source: /dockermnt/mosquitto/config/, target: /mosquitto/config/, read_only: "no",  type: bind }
     - { source: /dockermnt/mosquitto/data/,   target: /mosquitto/data/,   read_only: "no",  type: bind }

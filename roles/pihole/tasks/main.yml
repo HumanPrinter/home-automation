@@ -45,6 +45,11 @@
       TZ: "Europe/Amsterdam"
       WEBPASSWORD: "{{ pihole.admin_password }}"
       ServerIP: "{{ pihole.ipaddress }}"
+    labels:
+      diun.enable: "true"
+      diun.watch_repo: "true"
+      diun.include_tags: "^v\\d+(\\.\\d+)+$"
+      diun.max_tags: "10"
     mounts:
     - { source: /dockermnt/pihole/conf,    target: /etc/pihole,    read_only: "no", type: bind }
     - { source: /dockermnt/pihole/dnsmasq, target: /etc/dnsmasq.d, read_only: "no", type: bind }

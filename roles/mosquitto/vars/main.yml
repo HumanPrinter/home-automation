@@ -17,3 +17,5 @@ mosquitto:
     password: "{{ vault_mosquitto_password_rpimonitor }}"
   - username: admin
     password: "{{ vault_mosquitto_password_admin }}"
+  - username: diun
+    password: "{{ vault_mosquitto_password_diun }}"
