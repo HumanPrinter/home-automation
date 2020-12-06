@@ -1,4 +1,4 @@
 pihole:
-  version: v5.2
+  version: v5.2.1
   ipaddress: 192.168.2.250
   admin_password: "{{ vault_pihole_adminpassword }}"
