@@ -21,7 +21,7 @@
   vars:
     container_basename: "vscode"
     container_image: "linuxserver/code-server"
-    container_tag: "{{ vscode.version }}"
+    container_tag: "version-{{ vscode.version }}"
     exposed_ports: "8443:8443"
     labels:
       diun.enable: "true"
