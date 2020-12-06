@@ -14,9 +14,12 @@
   file:
     path: /opt/RPi-Reporter-MQTT2HA-Daemon/
     state: directory
+    mode: 0755
+    owner: root
+    group: root
   become: yes
   tags: [rpi_monitor]
-    
+
 - name: "Unpack the downloaded release archive"
   unarchive:
     src: "https://github.com/ironsheep/RPi-Reporter-MQTT2HA-Daemon/archive/v{{ rpi_monitor.version }}.tar.gz"

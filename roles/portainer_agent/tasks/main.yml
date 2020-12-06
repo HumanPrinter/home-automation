@@ -13,6 +13,6 @@
       diun.enable: "true"
       diun.watch_repo: "true"
       diun.include_tags: "^\\d+(\\.\\d+)+$"
-      diun.max_tags: "10"  
+      diun.max_tags: "10"
     mounts:
     - { source: /var/run/docker.sock, target: /var/run/docker.sock, read_only: "no", type: bind }
