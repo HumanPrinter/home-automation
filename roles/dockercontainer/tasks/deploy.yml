@@ -11,6 +11,7 @@
     env: "{{ environment_variables | default({}) }}"
     labels: "{{ labels | default({}) }}"
     command: "{{ command | default(None) }}"
+    memory: "{{ memory_limit | default(None) }}"
     network_mode: "{{ network_mode | default('bridge') }}"
     published_ports: "{{ exposed_ports | default([]) }}"
     state: started
