@@ -1,4 +1,18 @@
 # Restore snapshot
+- name: Configure the Docker daemon
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  notify: restart docker
+  tags: [home-assistant, home-assistant-install, home-assistant-docker]
+
+- name: Run the handlers
+  meta: flush_handlers
+
 - name: Install some common tools
   apt:
     update_cache: yes
@@ -44,13 +58,13 @@
   command: /bin/bash /tmp/installer.sh -m raspberrypi3 -d /dockermnt/hassio/
   become: yes
   when: "not home_assistant_installed.stat.exists"
-  tags: [home-assistantX, home-assistant-installX]
+  tags: [home-assistant, home-assistant-install]
 
 - name: Remove the install script
   file:
     path: /tmp/installer.sh
     state: absent
-  tags: [home-assistantX, home-assistant-installX]
+  tags: [home-assistant, home-assistant-install]
 
 - name: Save a file to mark the installation of Home-Assistant
   file:
@@ -59,4 +73,4 @@
     mode: 0444
   become: yes
   when: "not home_assistant_installed.stat.exists"
-  tags: [home-assistantX, home-assistant-installX]
+  tags: [home-assistant, home-assistant-install]
