@@ -61,6 +61,7 @@
     exposed_ports: "8086:8086"
     environment_variables:
       TZ: "Europe/Amsterdam"
+      INFLUXDB_DATA_INDEX_VERSION: "tsi1"
     labels:
       diun.enable: "true"
       diun.watch_repo: "true"
