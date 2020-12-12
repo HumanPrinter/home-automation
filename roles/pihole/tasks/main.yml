@@ -40,7 +40,7 @@
     network_mode: "host"
     dns_servers:
     - 127.0.0.1
-    - 192.168.2.254
+    - 192.168.100.1
     environment_variables:
       TZ: "Europe/Amsterdam"
       WEBPASSWORD: "{{ pihole.admin_password }}"

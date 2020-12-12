@@ -7,7 +7,7 @@ datasources:
   type: influxdb
   access: proxy
   orgId: 1
-  url: http://influxdb:8086
+  url: http://influxdb.lan:8086
   user: {{ influxdb.default_readusername }}
   database: {{ influxdb.database_name }}
   basicAuth: false
