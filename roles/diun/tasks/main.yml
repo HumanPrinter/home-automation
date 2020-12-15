@@ -22,7 +22,7 @@
       LOG_LEVEL: "info"
       LOG_JSON: "false"
       DIUN_WATCH_WORKERS: "2"
-      DIUN_WATCH_SCHEDULE: "*/15 * * * *"
+      DIUN_WATCH_SCHEDULE: "0 */4 * * *"
       DIUN_PROVIDERS_DOCKER: "true"
       DIUN_NOTIF_SLACK_WEBHOOKURL: "https://hooks.slack.com/services/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"
     labels:
