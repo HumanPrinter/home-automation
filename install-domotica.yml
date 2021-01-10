@@ -6,5 +6,5 @@
   - role: dockerhost
   - role: rpi_monitor
   - role: mount_usbdrive
-    mount_device: sda
-    mount_partition: sda1
+    mount_device: sdb
+    mount_partition: sdb1
