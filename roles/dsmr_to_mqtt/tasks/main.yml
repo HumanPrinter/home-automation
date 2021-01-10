@@ -38,5 +38,6 @@
     environment_variables:
       MQTT_USERNAME: "{{ dsmr_to_mqtt.mqtt_username }}"
       MQTT_PASSWORD: "{{ dsmr_to_mqtt.mqtt_password }}"
+      MQTT_BROKER: "{{ dsmr_to_mqtt.mqtt_broker }}"
       TZ: "Europe/Amsterdam"
   tags: [docker-container]
