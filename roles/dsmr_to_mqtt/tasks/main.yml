@@ -5,7 +5,7 @@
 - name: Clone the git repository for DSMR-to-MQTT # noqa 401 The latest version is the right version
   git:
     dest: /home/pi/projects/dsmr-to-mqtt/
-    repo: 'git@ssh.dev.azure.com:v3/humanprinter/Home%20Automation/dsmr-to-mqtt'
+    repo: "{{ dsmr_to_mqtt.git_repo }}"
     clone: yes
     update: yes
     remote: origin

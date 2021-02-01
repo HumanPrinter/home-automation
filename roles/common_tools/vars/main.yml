@@ -1,0 +1,3 @@
+git:
+  username: "Oscar Brouwer"
+  email: "{{ vault_git_email }}"

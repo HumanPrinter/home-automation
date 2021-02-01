@@ -1,4 +1,5 @@
 pihole:
   version: v5.5.1
+  repository: git@ssh.dev.azure.com:v3/humanprinter/Home%20Automation/pihole
   ipaddress: 192.168.100.250
   admin_password: "{{ vault_pihole_adminpassword }}"

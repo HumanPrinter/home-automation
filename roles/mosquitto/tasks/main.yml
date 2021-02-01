@@ -13,7 +13,7 @@
     tasks_from: main
   vars:
     templates:
-    - { src: mosquitto_passwd.j2, dest: mosquitto/config/passwd }
+    - { src: mosquitto_passwd.j2, dest: mosquitto/config/passwd, mode: 0644 }
     mounts:
     - { source: mosquitto/config/ }
   when: "not passwd_stat.stat.exists"
@@ -42,7 +42,7 @@
     tasks_from: main
   vars:
     templates:
-    - { src: mosquitto.conf.j2, dest: mosquitto/config/mosquitto.conf }
+    - { src: mosquitto.conf.j2, dest: mosquitto/config/mosquitto.conf, mode: 0644 }
     mounts:
     - { source: mosquitto/config/ }
     - { source: mosquitto/data/ }

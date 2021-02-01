@@ -1,6 +1,8 @@
 openvpn:
   version: 20200629
+  repository: git@ssh.dev.azure.com:v3/humanprinter/Home%20Automation/openvpn_data
 
 azurecr:
+  url: humanprinter.azurecr.io
   username: humanprinter
   password: "{{ vault_azurecr_password }}"

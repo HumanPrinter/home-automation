@@ -22,7 +22,7 @@
 - name: Clone the git repository for OpenVPN # noqa 401 The latest version is the right version
   git:
     dest: /dockermnt/openvpn/
-    repo: 'git@ssh.dev.azure.com:v3/humanprinter/Home%20Automation/openvpn_data'
+    repo: "{{ openvpn.repository }}"
     clone: yes
     update: no
     remote: origin
@@ -30,7 +30,7 @@
   tags: [git-repo]
 
 - name: Login to the Azure Container Registry
-  command: "docker login humanprinter.azurecr.io --username={{ azurecr.username }} --password={{ azurecr.password }}"
+  command: "docker login {{ azurecr.url }} --username={{ azurecr.username }} --password={{ azurecr.password }}"
   changed_when: false
   tags: [docker-container]
 
@@ -40,7 +40,7 @@
     tasks_from: default
   vars:
     container_basename: "openvpn"
-    container_image: "humanprinter.azurecr.io/pi/openvpn"
+    container_image: "{{ azurecr.url }}/pi/openvpn"
     container_tag: "{{ openvpn.version }}"
     capabilities:
     - NET_ADMIN

@@ -1,3 +1,7 @@
+- name: Include vaulted variables
+  include_vars: vault.yml
+  tags: [common-tools, git]
+
 - name: Install some common tools
   apt:
     update_cache: yes
@@ -15,8 +19,8 @@
     name: "{{ item.name }}"
     value: "{{ item.value }}"
   loop:
-  - { name: "user.name",  value: "Oscar Brouwer" }
-  - { name: "user.email", value: "o_brouwer@hotmail.com" }
+  - { name: "user.name",  value: "{{ git.username }}" }
+  - { name: "user.email", value: "{{ git.email }}" }
   tags: [common-tools, git]
 
 - name: Add the public key of Azure DevOps to the known hosts

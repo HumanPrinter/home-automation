@@ -1,2 +1,3 @@
 diun:
   version: 4.11.0
+  slack_webhook: "{{ vault_diun_slack_webhok }}"

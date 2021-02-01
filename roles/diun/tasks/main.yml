@@ -1,6 +1,6 @@
-# - name: Include vaulted variables
-#   include_vars: vault.yml
-#   tags: [docker-mounts]
+- name: Include vaulted variables
+  include_vars: vault.yml
+  tags: [docker-mounts]
 
 - include_role:
     name: dockermounts
@@ -24,7 +24,7 @@
       DIUN_WATCH_WORKERS: "2"
       DIUN_WATCH_SCHEDULE: "0 */4 * * *"
       DIUN_PROVIDERS_DOCKER: "true"
-      DIUN_NOTIF_SLACK_WEBHOOKURL: "https://hooks.slack.com/services/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"
+      DIUN_NOTIF_SLACK_WEBHOOKURL: "{{ diun.slack_webhook }}"
     labels:
       diun.enable: "true"
       diun.watch_repo: "true"
