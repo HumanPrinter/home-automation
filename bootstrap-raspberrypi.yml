@@ -61,6 +61,19 @@
     become: yes
     tags: [memory-split]
 
+  - name: Set the fan control for the PoE-hat
+    blockinfile:
+      path: /boot/config.txt
+      block: |
+        dtoverlay=rpi-poe
+        dtparam=poe_fan_temp0=60000,poe_fan_temp0_hyst=1000
+        dtparam=poe_fan_temp1=65000,poe_fan_temp1_hyst=5000
+        dtparam=poe_fan_temp2=70000,poe_fan_temp2_hyst=5000
+        dtparam=poe_fan_temp3=75000,poe_fan_temp3_hyst=5000
+    register: fan_control
+    become: yes
+    tags: [fan-control]
+
   - name: Set the locale (step 1 of 3)
     lineinfile:
       path: /etc/locale.gen
@@ -120,7 +133,7 @@
       reboot_timeout: 300
       msg: Reboot initiated by Ansible
     become: yes
-    when: host_name.changed or memory_split.changed
+    when: host_name.changed or memory_split.changed or fan_control.changed
     tags: [reboot]
 
   - name: Run apt-get update # noqa 403 - This task is specifically created to perform an apt full-upgrade
