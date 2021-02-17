@@ -11,9 +11,6 @@
     - { source: vscode/ }
   tags: [docker-mounts]
 
-- debug:
-    var: vscode.version
-
 - name: Deploy Docker container
   include_role:
     name: dockercontainer
@@ -38,5 +35,4 @@
       HOMEASSISTANT_TOKEN: "{{ vscode.settings.homeassistant_longLivedAccessToken }}"
       PUID: "0"
       PGID: "0"
-
   tags: [docker-container]
