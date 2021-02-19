@@ -37,3 +37,7 @@
     mounts:
     - { source: /dockermnt/grafana/config/, target: /etc/grafana/, read_only: "yes", type: bind }
   tags: [docker-container]
+
+- name: "Reset admin password"
+  command: docker exec grafana_{{ grafana.version }} grafana-cli admin reset-admin-password {{ vault_grafana_admin_password }}
+  tags: [docker-container, grafana-auth]
