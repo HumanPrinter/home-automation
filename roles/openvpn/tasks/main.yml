@@ -19,7 +19,7 @@
   register: git_repo
   tags: [git-repo]
 
-- name: Clone the git repository for OpenVPN # noqa 401 The latest version is the right version
+- name: Clone the git repository for OpenVPN # noqa git-latest The latest version is the right version
   git:
     dest: /dockermnt/openvpn/
     repo: "{{ openvpn.repository }}"

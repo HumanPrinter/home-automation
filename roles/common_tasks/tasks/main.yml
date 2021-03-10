@@ -1,4 +1,4 @@
-- name: Run apt-get update # noqa 403 - This task is specifically created to perform an apt full-upgrade
+- name: Run apt-get update # noqa package-latest - This task is specifically created to perform an apt full-upgrade
   apt:
     autoremove: yes
     state: latest

@@ -17,7 +17,7 @@
   register: git_repo
   tags: [git-repo]
 
-- name: Clone the git repository for PiHole # noqa 401 The latest version is the right version
+- name: Clone the git repository for PiHole # noqa git-latest The latest version is the right version
   git:
     dest: /dockermnt/pihole/
     repo: "{{ pihole.repository }}"

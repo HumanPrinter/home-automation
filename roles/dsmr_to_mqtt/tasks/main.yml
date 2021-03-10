@@ -2,7 +2,7 @@
   include_vars: vault.yml
   tags: [docker-container]
 
-- name: Clone the git repository for DSMR-to-MQTT # noqa 401 The latest version is the right version
+- name: Clone the git repository for DSMR-to-MQTT # noqa git-latest The latest version is the right version
   git:
     dest: /home/pi/projects/dsmr-to-mqtt/
     repo: "{{ dsmr_to_mqtt.git_repo }}"

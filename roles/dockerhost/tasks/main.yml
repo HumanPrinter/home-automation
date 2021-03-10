@@ -10,7 +10,7 @@
   register: config_result
   tags: [docker, docker-config]
 
-- name: reboot machine # noqa 503 - Rebooting needs to happen at this point and not after all tasks are finished
+- name: reboot machine # noqa no-handler - Rebooting needs to happen at this point and not after all tasks are finished
   reboot:
     test_command: whoami
     reboot_timeout: 300
