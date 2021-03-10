@@ -20,4 +20,5 @@
     comparisons:
       '*': strict
   when: "condition | default(True)"
+  register: container_deploy
   tags: [docker-container, deploy]

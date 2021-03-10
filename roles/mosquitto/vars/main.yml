@@ -1,10 +1,8 @@
 mosquitto:
-  version: "2.0.7"
+  version: "2.0.8"
   users:
   - username: admin
     password: "{{ vault_mosquitto_password_admin }}"
-  #- username: openhab
-  #  password: "{{ vault_mosquitto_password_openhab }}"
   - username: homeassistant
     password: "{{ vault_mosquitto_password_homeassistant }}"
   - username: nodered
@@ -13,11 +11,3 @@ mosquitto:
     password: "{{ vault_mosquitto_password_rpimonitor }}"
   - username: iot_device
     password: "{{ vault_mosquitto_password_iot_device }}"
-  #- username: shelly
-  #  password: "{{ vault_mosquitto_password_shelly }}"
-  #- username: tasmota
-  #  password: "{{ vault_mosquitto_password_tasmota }}"
-  #- username: yicamera
-  #  password: "{{ vault_mosquitto_password_yicamera }}"
-  
-  
