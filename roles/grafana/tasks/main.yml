@@ -1,6 +1,6 @@
 - name: Include vaulted variables
   include_vars: vault.yml
-  tags: [docker-mounts]
+  tags: [docker-mounts, grafana-auth]
 
 - include_role:
     name: dockermounts
@@ -38,6 +38,12 @@
     - { source: /dockermnt/grafana/config/, target: /etc/grafana/, read_only: "yes", type: bind }
   tags: [docker-container]
 
-- name: "Reset admin password"
+- name: "Wait for Grafana to become fully initialized"
+  wait_for:
+    delay: 10
+    port: 3000
+  tags: [docker-container]
+
+- name: "Reset admin password" # noqa no-changed-when This command is idempotent
   command: docker exec grafana_{{ grafana.version }} grafana-cli admin reset-admin-password {{ vault_grafana_admin_password }}
   tags: [docker-container, grafana-auth]
