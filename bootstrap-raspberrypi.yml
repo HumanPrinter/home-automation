@@ -11,6 +11,7 @@
     copy:
       dest: /etc/hostname
       content: "{{ hostname }}"
+      mode: 0644
     become: yes
     register: host_name
     tags: [hostname]
@@ -18,7 +19,7 @@
   - name: Set the hostname (step 2 of 2) - Change /etc/hosts
     lineinfile:
       path: /etc/hosts
-      line: "127.0.1.1\t{{ hostname }}"
+      line: "127.0.1.1    {{ hostname }}"
       regexp: "^127\\.0\\.1\\.1\\s+(?!localhost)\\w+$"
     become: yes
     tags: [hostname]
@@ -30,19 +31,20 @@
     become: yes
     tags: [timezone]
 
-  - name: Change the timezone (step 2 of 2) - Run dpkg-reconfigure
+  - name: Change the timezone (step 2 of 2) - Run dpkg-reconfigure # noqa command-instead-of-shell no-handler - Shell functionality is required here
     shell: dpkg-reconfigure -f noninteractive tzdata
     become: yes
     when: timezone_result.changed
     tags: [timezone]
 
-  - name: Change the WiFi country (step 1 of 2) - Get current country setting
+  - name: Change the WiFi country (step 1 of 2) - Get current country setting # noqa command-instead-of-shell Shell functionality is required here
     shell: 'wpa_cli -i wlan0 get country'
     become: yes
     register: wifi_country
+    changed_when: no
     tags: [wifi]
 
-  - name: Change the WiFi country (step 2 of 2) - Change WiFi country
+  - name: Change the WiFi country (step 2 of 2) - Change WiFi country # noqa command-instead-of-shell Shell functionality is required here
     shell: "{{ item }}"
     loop:
     - 'wpa_cli -i wlan0 set country "NL"'
@@ -96,7 +98,7 @@
     become: yes
     tags: [locale]
 
-  - name: Set the locale (step 3 of 3)
+  - name: Set the locale (step 3 of 3) # noqa command-instead-of-shell Shell functionality is required here
     shell: dpkg-reconfigure -f noninteractive locales
     become: yes
     when: generated_locales.changed or default_locale.changed
@@ -116,7 +118,7 @@
     register: keyboard_settings
     tags: [keyboard]
 
-  - name: Configure keyboard (step 2 of 2)
+  - name: Configure keyboard (step 2 of 2) # noqa command-instead-of-shell Shell functionality is required here
     shell: "{{ item }}"
     loop:
     - 'dpkg-reconfigure -f noninteractive keyboard-configuration'
@@ -136,7 +138,7 @@
     when: host_name.changed or memory_split.changed or fan_control.changed
     tags: [reboot]
 
-  - name: Run apt-get update # noqa 403 - This task is specifically created to perform an apt full-upgrade
+  - name: Run apt-get update # noqa package-latest command-instead-of-shell - Shell functionality is required here, This task is specifically created to perform an apt full-upgrade
     apt:
       autoremove: yes
       state: latest

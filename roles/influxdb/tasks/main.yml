@@ -59,7 +59,6 @@
     container_image: "influxdb"
     container_tag: "{{ influxdb.version }}"
     exposed_ports: "8086:8086"
-    #memory_limit: "500m"
     environment_variables:
       TZ: "Europe/Amsterdam"
       INFLUXDB_DATA_INDEX_VERSION: "tsi1"
