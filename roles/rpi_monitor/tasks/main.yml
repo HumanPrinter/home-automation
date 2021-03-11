@@ -53,5 +53,6 @@
   notify: Start rpi_monitor
   tags: [rpi_monitor]
 
-- meta: flush_handlers
+- name: "Run any notified handlers"
+  meta: flush_handlers
   tags: [rpi_monitor]

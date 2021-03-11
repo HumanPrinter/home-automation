@@ -8,7 +8,8 @@
   include_vars: vault.yml
   tags: [prepare]
 
-- include_role:
+- name: Deploy the required configuration files and directories
+  include_role:
     name: dockermounts
     tasks_from: main
   vars:
@@ -19,7 +20,8 @@
   when: "not passwd_stat.stat.exists"
   tags: [prepare, docker-mounts]
 
-- include_role:
+- name: Deploy the Docker container
+  include_role:
     name: dockercontainer
     tasks_from: default
   vars:
@@ -37,7 +39,8 @@
   when: "not passwd_stat.stat.exists"
   tags: [prepare, docker-container]
 
-- include_role:
+- name: Deploy the required configuration files and directories
+  include_role:
     name: dockermounts
     tasks_from: main
   vars:
@@ -48,7 +51,8 @@
     - { source: mosquitto/data/ }
   tags: [deploy, docker-mounts]
 
-- include_role:
+- name: Deploy the Docker container
+  include_role:
     name: dockercontainer
     tasks_from: default
   vars:

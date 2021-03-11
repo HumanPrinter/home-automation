@@ -98,7 +98,7 @@
     become: yes
     tags: [locale]
 
-  - name: Set the locale (step 3 of 3) # noqa command-instead-of-shell Shell functionality is required here
+  - name: Set the locale (step 3 of 3) # noqa command-instead-of-shell no-handler - Shell functionality is required here
     shell: dpkg-reconfigure -f noninteractive locales
     become: yes
     when: generated_locales.changed or default_locale.changed
@@ -118,7 +118,7 @@
     register: keyboard_settings
     tags: [keyboard]
 
-  - name: Configure keyboard (step 2 of 2) # noqa command-instead-of-shell Shell functionality is required here
+  - name: Configure keyboard (step 2 of 2) # noqa command-instead-of-shell no-handler - Shell functionality is required here
     shell: "{{ item }}"
     loop:
     - 'dpkg-reconfigure -f noninteractive keyboard-configuration'
@@ -129,7 +129,7 @@
     when: keyboard_settings.changed
     tags: [keyboard]
 
-  - name: reboot machine
+  - name: reboot machine # noqa no-handler
     reboot:
       test_command: whoami
       reboot_timeout: 300

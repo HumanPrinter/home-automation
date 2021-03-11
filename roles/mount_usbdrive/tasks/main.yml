@@ -3,7 +3,8 @@
     available_mounts: "{{ ansible_mounts|json_query('[].mount') }}"
   tags: [mount-usbdrive]
 
-- meta: end_play
+- name: Ending the playbook because no actions are required
+  meta: end_play
   when: "not available_mounts is defined or mount_path | default('/mnt/usbdrive') in available_mounts"
   tags: [mount-usbdrive]
 
