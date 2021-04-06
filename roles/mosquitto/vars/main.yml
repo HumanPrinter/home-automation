@@ -1,5 +1,5 @@
 mosquitto:
-  version: "2.0.9"
+  version: "2.0.10"
   users:
   - username: admin
     password: "{{ vault_mosquitto_password_admin }}"
