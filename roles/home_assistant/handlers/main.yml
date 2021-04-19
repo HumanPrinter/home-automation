@@ -1,7 +1,0 @@
-- name: restart docker
-  systemd:
-    name: docker
-    enabled: yes
-    state: restarted
-  become: yes
-  tags: [home-assistant, home-assistant-install, home-assistant-docker]
