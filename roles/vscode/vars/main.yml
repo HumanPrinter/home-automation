@@ -1,5 +1,0 @@
-vscode:
-  version: "v3.9.1"
-  settings:
-    homeassistant_hostUrl: "{{ vault_vscode_settings_homeassistant_hostUrl }}"
-    homeassistant_longLivedAccessToken: "{{ vault_vscode_settings_homeassistant_longLivedAccessToken }}"
