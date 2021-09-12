@@ -1,4 +1,4 @@
-- hosts: pihole
+- hosts: networkhub
   gather_facts: no
   roles:
   - role: portainer_server
