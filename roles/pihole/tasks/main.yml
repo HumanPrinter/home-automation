@@ -51,7 +51,7 @@
     labels:
       diun.enable: "true"
       diun.watch_repo: "true"
-      diun.include_tags: "^v\\d+(\\.\\d+)+$"
+      diun.include_tags: "^\\d{4}\\.\\d+(\\.\\d+)+$"
       diun.max_tags: "10"
     mounts:
     - { source: /dockermnt/pihole/conf,    target: /etc/pihole,    read_only: "no", type: bind }
