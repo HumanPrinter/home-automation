@@ -1,0 +1,8 @@
+192.168.100.170 shelly-woonkamer-button.lan
+192.168.100.171 shelly-slaapkamer-button-oscar.lan
+192.168.100.177 shelly-slaapkamer-button-jelske.lan
+192.168.100.250 pihole.lan
+192.168.100.6 grafana.oscarbrouwer.nl
+192.168.100.6 unifi.oscarbrouwer.nl
+192.168.100.251 mosquitto.lan
+192.168.100.251 unifi.lan

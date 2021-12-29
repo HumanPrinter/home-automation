@@ -1,6 +1,6 @@
 - name: Include vaulted variables
   include_vars: vault.yml
-  tags: [docker-container]
+  tags: [docker-container, docker-mounts]
 
 - name: Create mount directories
   include_role:
@@ -9,23 +9,13 @@
   vars:
     mounts:
     - { source: pihole/ }
+    templates:
+    - { src: conf/setupVars.conf.j2, dest: pihole/conf/setupVars.conf.test, mode: '644' }
+    files:
+    - { src: conf/custom.list,                    dest: pihole/conf/custom.list,                    mode: '644' }
+    - { src: dnsmasq/04-pihole-static-dhcp.conf,  dest: pihole/dnsmasq/04-pihole-static-dhcp.conf,  mode: '644' }
+    - { src: dnsmasq/05-pihole-custom-cname.conf, dest: pihole/dnsmasq/05-pihole-custom-cname.conf, mode: '644' }
   tags: [docker-mounts]
-
-- name: Check if there is already a git repository present
-  stat:
-    path: /dockermnt/pihole/.git/
-  register: git_repo
-  tags: [git-repo]
-
-- name: Clone the git repository for PiHole # noqa git-latest The latest version is the right version
-  git:
-    dest: /dockermnt/pihole/
-    repo: "{{ pihole.repository }}"
-    clone: yes
-    update: no
-    remote: origin
-  when: not git_repo.stat.exists
-  tags: [git-repo]
 
 - name: Deploy Docker container
   include_role:
@@ -47,7 +37,7 @@
     environment_variables:
       TZ: "Europe/Amsterdam"
       WEBPASSWORD: "{{ pihole.admin_password }}"
-      ServerIP: "{{ pihole.ipaddress }}"
+      FTLCONF_REPLY_ADDR4: "{{ pihole.ipaddress }}"
     labels:
       diun.enable: "true"
       diun.watch_repo: "true"
@@ -56,4 +46,10 @@
     mounts:
     - { source: /dockermnt/pihole/conf,    target: /etc/pihole,    read_only: "no", type: bind }
     - { source: /dockermnt/pihole/dnsmasq, target: /etc/dnsmasq.d, read_only: "no", type: bind }
+  register: container
   tags: [docker-container]
+
+- name: "Restart PiHole"
+  command: docker exec pihole_{{ pihole.version }} pihole restartdns
+  when: "not container.changed | default(false) and (static_files.changed | default(false) or template_files.changed | default(false))"
+  tags: [docker-container, docker-mounts]

@@ -20,7 +20,7 @@
   when: "item.type | default('directory') == 'directory'"
   tags: [docker-mounts]
 
-- name: Ensure template destinations exist
+- name: Ensure template/file destinations exist
   file:
     path: "/dockermnt/{{ item.dest | dirname }}"
     state: directory
@@ -28,8 +28,21 @@
     group: "{{ item.group | default('docker') }}"
     mode: "775"
   become: yes
-  loop: "{{ templates }}"
-  when: "templates is defined and (condition | default(True))"
+  loop: "{{ templates | default([]) + files | default([]) }}"
+  when: "(templates is defined or files is defined) and (condition | default(True))"
+  tags: [docker-mounts]
+
+- name: Copy static files
+  copy:
+    dest: "/dockermnt/{{ item.dest }}"
+    src: "{{ item.src }}"
+    owner: "{{ management_user }}"
+    group: "{{ item.group | default('docker') }}"
+    mode: "{{ item.mode | default('755') }}"
+  become: yes
+  loop: "{{ files }}"
+  when: "files is defined and (condition | default(True))"
+  register: static_files
   tags: [docker-mounts]
 
 - name: Create files from templates
@@ -42,4 +55,5 @@
   become: yes
   loop: "{{ templates }}"
   when: "templates is defined and (condition | default(True))"
+  register: template_files
   tags: [docker-mounts]
