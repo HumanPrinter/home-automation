@@ -1,0 +1,46 @@
+- name: Create mount directories
+  include_role:
+    name: dockermounts
+    tasks_from: main
+  vars:
+    mounts:
+    - { source: ser2net/ }
+    templates:
+    - { src: ser2net.conf.j2, dest: ser2net/ser2net.conf, mode: '644' }
+  tags: [docker-mounts]
+
+- name: Login to Azure
+  command: "az login --service-principal -u {{ azure.principal.app_id }} -p {{ azure.principal.password }} --tenant {{ azure.tenant }}"
+  delegate_to: localhost
+  no_log: true
+  tags: [docker-login]
+
+- name: Retrieve ACR token
+  shell: az acr login --name humanprinter --expose-token | jq -r .accessToken
+  delegate_to: localhost
+  register: acr_login
+  no_log: true
+  tags: [docker-login]
+
+- name: Execute Docker login
+  command: "docker login humanprinter.azurecr.io -u 00000000-0000-0000-0000-000000000000 -p {{ acr_login.stdout }}"
+  no_log: true
+  tags: [docker-login]
+
+- name: Deploy Docker container
+  include_role:
+    name: dockercontainer
+    tasks_from: default
+  vars:
+    container_basename: "ser2net"
+    container_image: "humanprinter.azurecr.io/ser2net"
+    container_tag: "{{ ser2net.version }}"
+    devices: "{{ ser2net.usb_device }}"
+    exposed_ports: "2001:2001"
+    mounts:
+    - { source: /etc/localtime,                  target: /etc/localtime,    read_only: "yes", type: bind }
+    - { source: /etc/timezone,                   target: /etc/timezone,     read_only: "yes", type: bind }
+    - { source: /dockermnt/ser2net/ser2net.conf, target: /etc/ser2net.conf, read_only: "yes", type: bind }
+    environment_variables:
+      TZ: "Europe/Amsterdam"
+  tags: [docker-container]

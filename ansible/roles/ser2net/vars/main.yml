@@ -1,0 +1,3 @@
+ser2net:
+  version: 20220218
+  usb_device: "/dev/ttyUSB0"
