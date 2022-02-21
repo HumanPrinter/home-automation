@@ -1,0 +1,5 @@
+#!/bin/bash
+
+key=$(az storage account keys list --subscription 034107b5-8a03-4e7c-b774-086d9d698c74 --resource-group rg-home-homeautomation --account-name sahomeautomationtfstate | jq -r .[0].value)
+
+terraform init --backend-config=access_key="$key" $@
