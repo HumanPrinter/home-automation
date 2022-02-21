@@ -12,6 +12,7 @@
 - name: Login to Azure
   command: "az login --service-principal -u {{ azure.principal.app_id }} -p {{ azure.principal.password }} --tenant {{ azure.tenant }}"
   delegate_to: localhost
+  changed_when: no
   no_log: true
   tags: [docker-login]
 
@@ -20,11 +21,13 @@
   delegate_to: localhost
   register: acr_login
   no_log: true
+  changed_when: no
   tags: [docker-login]
 
 - name: Execute Docker login
   command: "docker login humanprinter.azurecr.io -u 00000000-0000-0000-0000-000000000000 -p {{ acr_login.stdout }}"
   no_log: true
+  changed_when: no
   tags: [docker-login]
 
 - name: Deploy Docker container
