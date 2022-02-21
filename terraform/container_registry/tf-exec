@@ -1,0 +1,13 @@
+#!/bin/bash
+
+trap 'unset TF_VAR_azuredevops_pat' EXIT
+
+pat=$(az keyvault secret show --vault-name "kv-home-homeautomation" --name "azuredevops-personal-access-token" | jq -r .value)
+export TF_VAR_azuredevops_pat=$pat
+
+if [ "$@" == "lint" ]
+then
+  tflint
+else
+  terraform $@
+fi
