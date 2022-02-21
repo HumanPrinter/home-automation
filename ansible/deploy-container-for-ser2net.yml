@@ -1,0 +1,4 @@
+- hosts: networkhub
+  gather_facts: no
+  roles:
+  - role: ser2net

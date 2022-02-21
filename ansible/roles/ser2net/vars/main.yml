@@ -1,8 +1,3 @@
 ser2net:
-  version: 2022.02.18
+  version: 20220218
   usb_device: "/dev/ttyUSB0"
-
-azurecr:
-  url: humanprinter.azurecr.io
-  username: humanprinter
-  password: "{{ vault_azurecr_password }}"
