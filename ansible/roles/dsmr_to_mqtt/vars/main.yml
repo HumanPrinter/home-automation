@@ -1,5 +1,0 @@
-dsmr_to_mqtt:
-  version: 202201.9
-  mqtt_broker: 192.168.100.251
-  mqtt_username: admin
-  mqtt_password: "{{ vault_dsmr_to_mqtt_password }}"

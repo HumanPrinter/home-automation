@@ -1,4 +1,0 @@
-- hosts: networkhub
-  gather_facts: no
-  roles:
-  - role: dsmr_to_mqtt
