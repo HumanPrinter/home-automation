@@ -6,7 +6,7 @@ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(l
 sudo apt-get update > /dev/null && sudo apt-get install terraform unzip
 
 echo "Install Ansible, Ansible-Lint, Yamllint using pip3"
-python3 -m pip install --user ansible ansible-lint yamllint > /dev/null
+python3 -m pip install ansible ansible-lint yamllint > /dev/null
 
 echo "Install TFLint"
 curl https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
