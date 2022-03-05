@@ -1,5 +1,5 @@
 grafana:
-  version: 8.3.6
+  version: 8.4.3
   rooturl: "{{ vault_grafana_rooturl }}"
   smtp:
     host: send.one.com
