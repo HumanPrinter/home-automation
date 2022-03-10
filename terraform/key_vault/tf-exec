@@ -1,5 +1,10 @@
 #!/bin/bash
 
+trap 'unset TF_VAR_home_ip' EXIT
+
+home_ip=$(curl --silent https://ifconfig.me)
+export TF_VAR_home_ip=$home_ip
+
 if [ "$@" == "lint" ]
 then
   tflint
