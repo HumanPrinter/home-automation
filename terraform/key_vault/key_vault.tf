@@ -11,7 +11,7 @@ resource "azurerm_key_vault" "homeautomation" {
 
   contact {
     email = "o_brouwer@hotmail.com"
-    name = "Oscar Brouwer"
+    name  = "Oscar Brouwer"
   }
 
   access_policy {
@@ -19,7 +19,7 @@ resource "azurerm_key_vault" "homeautomation" {
     object_id = data.azurerm_client_config.current_client.object_id
 
     # For now, set all permissions to the default user (o_brouwer@hotmail.com)
-    certificate_permissions = [ 
+    certificate_permissions = [
       "Backup",
       "Create",
       "Delete",
