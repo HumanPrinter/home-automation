@@ -53,7 +53,7 @@ then
   overall_exit_code=$(echo "ibase=2;obase=2;$((overall_exit_code+lint_exit_code))" | bc -l)
 fi
 
-# Since Ansible-Lint also executes Yamllint (but not on all files), only execute yamllint when Ansible-Lint did not 
+# Since Ansible-Lint also executes Yamllint (but not on all files), only execute yamllint when Ansible-Lint did not
 # detect any issues to avoid double hits
 if [[ $overall_exit_code == 0 ]]
 then
