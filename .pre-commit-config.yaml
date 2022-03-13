@@ -1,0 +1,45 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.1.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - id: check-added-large-files
+  - id: check-executables-have-shebangs
+  - id: pretty-format-json
+  - id: check-merge-conflict
+  - id: check-symlinks
+  - id: detect-private-key
+  - id: mixed-line-ending
+  - id: requirements-txt-fixer
+
+- repo: https://github.com/adrienverge/yamllint
+  rev: v1.26.3
+  hooks:
+  - id: yamllint
+
+- repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+  rev: v1.2.4
+  hooks:
+  - id: python-safety-dependencies-check
+
+- repo: https://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.64.0
+  hooks:
+  - id: checkov
+  - id: terraform_fmt
+  - id: terraform_validate
+  - id: terraform_tflint
+
+- repo: https://github.com/ansible-community/ansible-lint
+  rev: v6.0.0a1
+  hooks:
+  - id: ansible-lint
+
+- repo: https://github.com/aquasecurity/tfsec
+  rev: v1.8.0
+  hooks:
+  - id: tfsec-system

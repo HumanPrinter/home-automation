@@ -1,4 +1,5 @@
 resource "azurerm_container_registry" "humanprinter" {
+  #checkov:skip=CKV_AZURE_139:Limiting the access to this ACR is a bit to much for now
   name                = "humanprinter"
   resource_group_name = azurerm_resource_group.home_homeautomation.name
   location            = azurerm_resource_group.home_homeautomation.location

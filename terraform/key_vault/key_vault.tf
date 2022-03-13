@@ -5,21 +5,26 @@ resource "azurerm_key_vault" "homeautomation" {
   enabled_for_disk_encryption = true
   tenant_id                   = data.azurerm_client_config.current_client.tenant_id
   soft_delete_retention_days  = 7
-  purge_protection_enabled    = false
+  purge_protection_enabled    = true
   sku_name                    = "standard"
   tags                        = local.tags
 
   contact {
     email = "o_brouwer@hotmail.com"
-    name = "Oscar Brouwer"
+    name  = "Oscar Brouwer"
   }
 
+  network_acls {
+    bypass         = "AzureServices"
+    default_action = "Deny"
+    ip_rules       = [var.home_ip]
+  }
   access_policy {
     tenant_id = data.azurerm_client_config.current_client.tenant_id
     object_id = data.azurerm_client_config.current_client.object_id
 
     # For now, set all permissions to the default user (o_brouwer@hotmail.com)
-    certificate_permissions = [ 
+    certificate_permissions = [
       "Backup",
       "Create",
       "Delete",
