@@ -35,11 +35,11 @@ repos:
   - id: terraform_tflint
 
 - repo: https://github.com/ansible-community/ansible-lint
-  rev: v6.0.0a1
+  rev: v6.0.0
   hooks:
   - id: ansible-lint
 
 - repo: https://github.com/aquasecurity/tfsec
-  rev: v1.8.0
+  rev: v1.10.0
   hooks:
   - id: tfsec-system
