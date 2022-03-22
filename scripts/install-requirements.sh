@@ -17,7 +17,7 @@ echo "Ensuring all pre-commit plugins are up to date"
 pre-commit autoupdate
 
 echo "Install TFSec"
-VERSION=v1.8.0
+VERSION=v1.13.0
 OS=linux
 ARCH=amd64
 sudo curl -L https://github.com/aquasecurity/tfsec/releases/download/$VERSION/tfsec-$OS-$ARCH -o /usr/local/bin/tfsec
