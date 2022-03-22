@@ -40,6 +40,6 @@ repos:
   - id: ansible-lint
 
 - repo: https://github.com/aquasecurity/tfsec
-  rev: v1.11.0
+  rev: v1.13.0
   hooks:
   - id: tfsec-system
