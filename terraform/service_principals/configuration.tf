@@ -2,8 +2,8 @@ terraform {
   required_version = ">=1.1.0"
 
   required_providers {
-    azurerm = ">=2.97.0"
-    azuread = ">=2.18.0"
+    azurerm = ">=2.99.0"
+    azuread = ">=2.19.1"
   }
 
   backend "azurerm" {
