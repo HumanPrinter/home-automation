@@ -27,7 +27,7 @@ repos:
   - id: python-safety-dependencies-check
 
 - repo: https://github.com/antonbabenko/pre-commit-terraform
-  rev: v1.64.0
+  rev: v1.64.1
   hooks:
   - id: checkov
   - id: terraform_fmt
@@ -40,6 +40,6 @@ repos:
   - id: ansible-lint
 
 - repo: https://github.com/aquasecurity/tfsec
-  rev: v1.15.0
+  rev: v1.15.2
   hooks:
   - id: tfsec-system
