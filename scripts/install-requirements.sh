@@ -17,10 +17,10 @@ echo "Ensuring all pre-commit plugins are up to date"
 pre-commit autoupdate
 
 echo "Install TFSec"
-VERSION=v1.13.0
 OS=linux
 ARCH=amd64
-sudo curl -L https://github.com/aquasecurity/tfsec/releases/download/$VERSION/tfsec-$OS-$ARCH -o /usr/local/bin/tfsec
+LATEST_BINARY=$(curl -s https://api.github.com/repos/aquasecurity/tfsec/releases/latest | grep "browser_download_url.*tfsec-$OS-$ARCH\"" | cut -d : -f 2,3 | tr -d \")
+sudo curl -L $LATEST_BINARY -o /usr/local/bin/tfsec
 sudo chmod +x /usr/local/bin/tfsec
 
 echo "Install TFLint"
