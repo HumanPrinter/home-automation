@@ -1,2 +1,2 @@
 portainer_agent:
-  version: "2.12.2-alpine"
+  version: "2.13.1-alpine"
