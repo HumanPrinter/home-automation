@@ -1,6 +1,6 @@
 - name: Create a list of available mounts
   set_fact:
-    available_mounts: "{{ ansible_mounts|json_query('[].mount') }}"
+    available_mounts: "{{ ansible_mounts | json_query('[].mount') }}"
   tags: [mount-usbdrive]
 
 - name: Ending the playbook because no actions are required
