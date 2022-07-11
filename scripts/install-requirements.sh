@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "Installing Terraform apt"
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt-get update > /dev/null && sudo apt-get install terraform unzip
 
 script_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -16,9 +16,8 @@ pre-commit install --install-hooks
 echo "Install TFSec"
 OS=linux
 ARCH=amd64
-LATEST_VERSION=$(curl -s https://api.github.com/repos/aquasecurity/tfsec/releases/latest | grep "browser_download_url.*tfsec-$OS-$ARCH" | cut -d : -f 2,3 | tr -d \")
-
-sudo curl -L $LATEST_VERSION -o /usr/local/bin/tfsec
+LATEST_BINARY=$(curl -s https://api.github.com/repos/aquasecurity/tfsec/releases/latest | grep "browser_download_url.*tfsec-$OS-$ARCH\"" | cut -d : -f 2,3 | tr -d \")
+sudo curl -L $LATEST_BINARY -o /usr/local/bin/tfsec
 sudo chmod +x /usr/local/bin/tfsec
 
 echo "Install TFLint"
