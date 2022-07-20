@@ -10,7 +10,7 @@
     mounts:
     - { source: pihole/ }
     templates:
-    - { src: conf/setupVars.conf.j2, dest: pihole/conf/setupVars.conf.test, mode: '644' }
+    - { src: conf/setupVars.conf.j2, dest: pihole/conf/setupVars.conf, mode: '644' }
     files:
     - { src: conf/custom.list,                    dest: pihole/conf/custom.list,                    mode: '644' }
     - { src: dnsmasq/04-pihole-static-dhcp.conf,  dest: pihole/dnsmasq/04-pihole-static-dhcp.conf,  mode: '644' }
