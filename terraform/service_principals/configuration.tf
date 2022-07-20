@@ -6,10 +6,12 @@ terraform {
     azuread = ">=2.19.1"
   }
 
-  backend "azurerm" {
-    storage_account_name = "sahomeautomationtfstate"
-    container_name       = "tfstate"
-    key                  = "homeautomation-service_principals.tfstate"
+  cloud {
+    organization = "HumanPrinter"
+
+    workspaces {
+      name = "service_principals"
+    }
   }
 }
 
