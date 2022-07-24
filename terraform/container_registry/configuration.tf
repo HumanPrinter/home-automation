@@ -11,10 +11,12 @@ terraform {
     }
   }
 
-  backend "azurerm" {
-    storage_account_name = "sahomeautomationtfstate"
-    container_name       = "tfstate"
-    key                  = "homeautomation-container_registry.tfstate"
+  cloud {
+    organization = "HumanPrinter"
+
+    workspaces {
+      name = "container_registry"
+    }
   }
 }
 
