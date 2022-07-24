@@ -1,4 +1,4 @@
-- hosts: networkhub
+- hosts: networkcontrol
   gather_facts: no
   roles:
   - role: unifi_controller
