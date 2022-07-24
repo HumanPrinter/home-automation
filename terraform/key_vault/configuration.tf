@@ -3,12 +3,15 @@ terraform {
 
   required_providers {
     azurerm = ">=2.99.0"
+    azuread = ">=2.19.1"
   }
 
-  backend "azurerm" {
-    storage_account_name = "sahomeautomationtfstate"
-    container_name       = "tfstate"
-    key                  = "homeautomation-key_vault.tfstate"
+  cloud {
+    organization = "HumanPrinter"
+
+    workspaces {
+      name = "key_vault"
+    }
   }
 }
 

@@ -19,11 +19,12 @@ resource "azurerm_key_vault" "homeautomation" {
     default_action = "Deny"
     ip_rules       = [var.home_ip]
   }
+
   access_policy {
     tenant_id = data.azurerm_client_config.current_client.tenant_id
-    object_id = data.azurerm_client_config.current_client.object_id
+    object_id = data.azuread_user.administrator.object_id
 
-    # For now, set all permissions to the default user (o_brouwer@hotmail.com)
+    # For now, set all permissions to the administrator (o_brouwer@hotmail.com)
     certificate_permissions = [
       "Backup",
       "Create",
