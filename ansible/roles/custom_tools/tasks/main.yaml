@@ -4,7 +4,7 @@
     name: "{{ item }}"
     state: present
   become: yes
-  loop: "{{ install_tools }}"
+  loop: "{{ install_tools | default([]) }}"
   tags: [custom-tools]
 
 - name: Remove some tools
@@ -13,7 +13,7 @@
     name: "{{ item }}"
     state: absent
   become: yes
-  loop: "{{ remove_tools }}"
+  loop: "{{ remove_tools | default([]) }}"
   tags: [custom-tools]
 
 - name: Add some custom pip packages
@@ -21,5 +21,5 @@
     name: "{{ item }}"
     state: present
   become: yes
-  loop: "{{ pip_tools }}"
+  loop: "{{ pip_tools | default([]) }}"
   tags: [custom-tools]

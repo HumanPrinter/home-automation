@@ -3,6 +3,9 @@
   - role: ssh
   - role: common_tasks
   - role: common_tools
+  - role: custom_tools
+    install_tools:
+    - dnsutils
   - role: dockerhost
   - role: rpi_monitor
   - role: static_ip
