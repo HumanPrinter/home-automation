@@ -17,7 +17,19 @@
     mode: "{{ item.mode | default('775') }}"
   become: yes
   loop: "{{ mounts | default([]) }}"
-  when: "item.type | default('directory') == 'directory'"
+  when: "item.type | default('directory') == 'directory' and not item.source.startswith('/')"
+  tags: [docker-mounts]
+
+- name: Create mount directories
+  file:
+    path: "{{ item.source }}"
+    state: directory
+    owner: "{{ item.owner | default(management_user) }}"
+    group: "{{ item.group | default('docker') }}"
+    mode: "{{ item.mode | default('775') }}"
+  become: yes
+  loop: "{{ mounts | default([]) }}"
+  when: "item.type | default('directory') == 'directory' and item.source.startswith('/')"
   tags: [docker-mounts]
 
 - name: Ensure template/file destinations exist
