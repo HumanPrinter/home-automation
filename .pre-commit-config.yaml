@@ -17,7 +17,7 @@ repos:
   - id: requirements-txt-fixer
 
 - repo: https://github.com/adrienverge/yamllint
-  rev: v1.27.1
+  rev: v1.28.0
   hooks:
   - id: yamllint
 
@@ -27,7 +27,7 @@ repos:
   - id: python-safety-dependencies-check
 
 - repo: https://github.com/antonbabenko/pre-commit-terraform
-  rev: v1.73.0
+  rev: v1.75.0
   hooks:
   - id: terraform_checkov
   - id: terraform_fmt
@@ -35,11 +35,11 @@ repos:
   - id: terraform_tflint
 
 - repo: https://github.com/ansible-community/ansible-lint
-  rev: v6.3.0
+  rev: v6.7.0
   hooks:
   - id: ansible-lint
 
 - repo: https://github.com/aquasecurity/tfsec
-  rev: v1.26.3
+  rev: v1.28.0
   hooks:
   - id: tfsec-system
