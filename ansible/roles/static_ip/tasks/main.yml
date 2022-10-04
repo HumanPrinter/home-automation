@@ -9,6 +9,6 @@
       static domain_name_servers={{ dns | join(' ') }}
   become: yes
   notify:
-  - start dhcpcd
-  - reboot machine
+  - Start dhcpcd
+  - Reboot machine
   tags: [static-ip]

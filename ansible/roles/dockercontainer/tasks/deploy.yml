@@ -1,5 +1,5 @@
 - name: Create and start Docker container
-  docker_container:
+  community.docker.docker_container:
     name: "{{ container_basename }}_{{ container_tag }}"
     image: "{{ container_image }}:{{ container_tag }}"
     container_default_behavior: compatibility
@@ -15,7 +15,7 @@
     network_mode: "{{ network_mode | default('bridge') }}"
     published_ports: "{{ exposed_ports | default([]) }}"
     state: started
-    restart_policy: "{{ restart_policy | default ('always') }}"
+    restart_policy: "{{ restart_policy | default('always') }}"
     mounts: "{{ mounts | default([]) }}"
     comparisons:
       '*': strict

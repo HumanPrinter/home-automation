@@ -14,7 +14,7 @@
   tags: [common-tools]
 
 - name: Configure git
-  git_config:
+  community.general.git_config:
     scope: global
     name: "{{ item.name }}"
     value: "{{ item.value }}"

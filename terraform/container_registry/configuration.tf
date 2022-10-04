@@ -2,12 +2,19 @@ terraform {
   required_version = ">=1.1.0"
 
   required_providers {
-    azurerm = ">=2.99.0"
-    azuread = ">=2.19.1"
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">=3.25.0"
+    }
+
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = ">=2.29.0"
+    }
 
     azuredevops = {
       source  = "microsoft/azuredevops"
-      version = ">=0.2.0"
+      version = ">=0.2.2"
     }
   }
 

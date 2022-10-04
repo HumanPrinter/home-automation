@@ -1,5 +1,5 @@
 - name: "Store the public key as authorized key"
-  authorized_key:
+  ansible.posix.authorized_key:
     user: "{{ management_user }}"
     key: "{{ ssh.public_key }}"
     state: present
@@ -25,5 +25,5 @@
     line: AllowGroups ssh-users
     regexp: "^#?AllowGroups"
   become: yes
-  notify: restart sshd
+  notify: Restart sshd
   tags: [ssh]

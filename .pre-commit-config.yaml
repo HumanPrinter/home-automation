@@ -35,9 +35,11 @@ repos:
   - id: terraform_tflint
 
 - repo: https://github.com/ansible-community/ansible-lint
-  rev: v6.7.0
+  rev: v6.8.0b3
   hooks:
   - id: ansible-lint
+    additional_dependencies:
+    - "jmespath"
 
 - repo: https://github.com/aquasecurity/tfsec
   rev: v1.28.0

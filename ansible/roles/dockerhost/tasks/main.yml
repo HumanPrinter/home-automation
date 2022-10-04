@@ -1,4 +1,5 @@
-- include: install.yml
+- name: Perform common install tasks
+  include_tasks: install.yml
   tags: [docker, docker-install]
 
 - name: Make sure the management user is member of the Docker group
@@ -10,7 +11,7 @@
   register: config_result
   tags: [docker, docker-config]
 
-- name: reboot machine # noqa no-handler - Rebooting needs to happen at this point and not after all tasks are finished
+- name: Reboot machine # noqa no-handler - Rebooting needs to happen at this point and not after all tasks are finished
   reboot:
     test_command: whoami
     reboot_timeout: 300

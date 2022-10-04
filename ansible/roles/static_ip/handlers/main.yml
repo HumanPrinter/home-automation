@@ -1,4 +1,4 @@
-- name: start dhcpcd
+- name: Start dhcpcd
   systemd:
     name: dhcpcd
     enabled: yes
@@ -6,7 +6,7 @@
   become: yes
   tags: [static-ip]
 
-- name: reboot machine
+- name: Reboot machine
   reboot:
     test_command: whoami
     reboot_timeout: 300

@@ -30,7 +30,8 @@
   tags: [git-repo]
 
 - name: Login to the Azure Container Registry
-  command: "docker login {{ azurecr.url }} --username={{ azurecr.username }} --password={{ azurecr.password }}"
+  command:
+    cmd: "docker login {{ azurecr.url }} --username={{ azurecr.username }} --password={{ azurecr.password }}"
   changed_when: false
   tags: [docker-container]
 

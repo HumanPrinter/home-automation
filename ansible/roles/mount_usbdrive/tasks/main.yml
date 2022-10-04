@@ -25,7 +25,7 @@
   tags: [mount-usbdrive]
 
 - name: Mount File System
-  mount:
+  ansible.posix.mount:
     path: "{{ mount_path | default('/mnt/usbdrive') }}"
     src: "/dev/{{ mount_partition }}"
     fstype: vfat
