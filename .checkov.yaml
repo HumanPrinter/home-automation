@@ -1,0 +1,7 @@
+skip-check:
+- CKV_AZURE_139 # Limiting the access to this ACR is a bit to much for now
+- CKV_AZURE_163 # Container scanning is above my pay grade
+- CKV_AZURE_164 # Trusted images is above my pay grade
+- CKV_AZURE_165 # Geo redundancy is not required
+- CKV_AZURE_166 # Verified images is above my pay grade
+- CKV_AZURE_167 # Retention policies is above my pay grade

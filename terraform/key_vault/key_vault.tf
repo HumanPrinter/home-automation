@@ -1,4 +1,5 @@
 resource "azurerm_key_vault" "homeautomation" {
+  #checkov:skip=CKV_AZURE_109:Usage of Terraform Cloud prevents a good use of firewall
   name                        = "kv-home-homeautomation"
   location                    = local.location
   resource_group_name         = data.azurerm_resource_group.homeautomation.name
